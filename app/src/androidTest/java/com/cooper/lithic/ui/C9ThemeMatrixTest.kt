@@ -81,25 +81,38 @@ class C9ThemeMatrixTest {
         }
     }
 
-    @Test fun primary_navigation_uses_a_theme_surface_beneath_the_selected_tab() {
+    @Test fun primary_navigation_uses_theme_capsule_and_selection_colors() {
         val theme = mutableStateOf(LithicAppearance.STONE_MIST)
         compose.setContent { LithicTheme(appearance = theme.value) { C2PrimaryNavigationBar(Home) {} } }
         val expected = mapOf(
-            LithicAppearance.CHARCOAL to Color(0xFF1E1E1E),
-            LithicAppearance.PURE_WHITE to Color(0xFFF7F8FA),
-            LithicAppearance.STONE_MIST to Color(0xFFE8EFF6),
+            LithicAppearance.CHARCOAL to (Color(0xFF1E1E1E) to Color(0xFF202C39)),
+            LithicAppearance.PURE_WHITE to (Color(0xFFF7F8FA) to Color(0xFFEFF4FA)),
+            LithicAppearance.STONE_MIST to (Color.White to Color(0xFFE8EFF6)),
         )
-        expected.forEach { (appearance, color) ->
+        expected.forEach { (appearance, colors) ->
             compose.runOnIdle { theme.value = appearance }
             compose.onNodeWithTag("tab-now").assertIsSelected()
-            assertSurfaceColor("tab-now", color)
+            compose.onNodeWithTag("tab-review").assertIsNotSelected()
+            assertNavigationTabColor("tab-review", colors.first)
+            assertNavigationTabColor("tab-now", colors.second)
         }
+    }
+
+    private fun assertNavigationTabColor(tag: String, expected: Color) {
+        val pixels = compose.onNodeWithTag(tag).captureToImage().toPixelMap()
+        // The sample is 16dp from the icon center, between the 24dp icon and the 40dp selection circle.
+        val sample = pixels[pixels.width / 2 + pixels.height / 3, pixels.height / 2]
+        assertColor(tag, expected, sample)
     }
 
     private fun assertSurfaceColor(tag: String, expected: Color) {
         val pixels = compose.onNodeWithTag(tag).captureToImage().toPixelMap()
-        // Left of centrally aligned content and well below rounded card corners or the navigation divider.
+        // Left of centrally aligned content and well below rounded card corners.
         val sample = pixels[minOf(3, pixels.width - 1), pixels.height / 2]
+        assertColor(tag, expected, sample)
+    }
+
+    private fun assertColor(tag: String, expected: Color, sample: Color) {
         assertEquals("$tag, red", expected.red, sample.red, 0.02f)
         assertEquals("$tag, green", expected.green, sample.green, 0.02f)
         assertEquals("$tag, blue", expected.blue, sample.blue, 0.02f)

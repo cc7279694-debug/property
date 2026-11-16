@@ -10,9 +10,12 @@ import com.cooper.lithic.feature.media.PhotoLiteCapability
 import com.cooper.lithic.feature.media.PhotoLiteCoverPanel
 import com.cooper.lithic.feature.media.PhotoLiteThumbnailPipeline
 import com.cooper.lithic.core.design.C2RecordIdentity
+import com.cooper.lithic.core.design.LocalLithicVisuals
 import androidx.activity.compose.BackHandler
+import androidx.compose.animation.animateColorAsState
+import androidx.compose.animation.core.tween
+import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -20,19 +23,22 @@ import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.consumeWindowInsets
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.safeDrawing
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.widthIn
 import androidx.compose.foundation.layout.windowInsetsPadding
 import androidx.compose.foundation.selection.selectable
 import androidx.compose.foundation.selection.selectableGroup
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material3.AlertDialog
-import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.NavigationBarDefaults
 import androidx.compose.material3.Scaffold
+import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import com.cooper.lithic.core.design.LithicTextButton as TextButton
 import com.cooper.lithic.core.design.C2Glyph
@@ -48,13 +54,15 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.luminance
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.platform.LocalView
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.semantics.Role
-import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.semantics.contentDescription
+import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleEventObserver
@@ -833,43 +841,55 @@ private fun subscriptionRecoveryRoute(state: SubscriptionUiState): NavKey? {
 @Composable
 internal fun C2PrimaryNavigationBar(currentPrimary: NavKey, onSelect: (NavKey) -> Unit) {
     val colors = MaterialTheme.colorScheme
-    val light = colors.surface.luminance() > 0.5f
-    val selectedColor = if (light) colors.primary else colors.onSurface
-    Column(
+    val capsuleColor = if (colors.surface == colors.background) colors.surfaceContainer else colors.surface
+    val selectionColor = LocalLithicVisuals.current.costSurface
+    Box(
         Modifier.fillMaxWidth()
-            .background(if (light) colors.surfaceContainer else colors.surface)
-            .windowInsetsPadding(NavigationBarDefaults.windowInsets),
+            .windowInsetsPadding(NavigationBarDefaults.windowInsets)
+            .padding(start = 16.dp, top = 4.dp, end = 16.dp, bottom = 14.dp),
+        contentAlignment = Alignment.Center,
     ) {
-        HorizontalDivider(color = colors.outlineVariant)
-        Row(Modifier.fillMaxWidth().selectableGroup()) {
-            val destinations = listOf(
-                Triple(Home, "现在", R.drawable.ic_primary_nav_home),
-                Triple(Review, "回看", R.drawable.ic_primary_nav_review),
-                Triple(Settings, "设置", R.drawable.ic_primary_nav_settings),
-            )
-            destinations.forEach { (destination, label, icon) ->
-                val selected = currentPrimary == destination
-                val color = if (selected) selectedColor else colors.onSurfaceVariant
-                Column(
-                    modifier = Modifier.weight(1f)
-                        .heightIn(min = 56.dp)
-                        .selectable(selected = selected, role = Role.Tab, onClick = { onSelect(destination) })
-                        .testTag(when (destination) {
-                            Home -> "tab-now"
-                            Review -> "tab-review"
-                            else -> "tab-settings"
-                        })
-                        .padding(vertical = 6.dp),
-                    horizontalAlignment = Alignment.CenterHorizontally,
-                    verticalArrangement = Arrangement.spacedBy(2.dp, Alignment.CenterVertically),
-                ) {
-                    Icon(painterResource(icon), contentDescription = null, tint = color, modifier = Modifier.size(24.dp))
-                    Text(
-                        label,
-                        style = MaterialTheme.typography.labelSmall,
-                        fontWeight = if (selected) FontWeight.SemiBold else FontWeight.Normal,
-                        color = color,
+        Surface(
+            modifier = Modifier.widthIn(max = 210.dp).fillMaxWidth().testTag("lithic-primary-navigation"),
+            shape = CircleShape,
+            color = capsuleColor,
+            border = BorderStroke(1.dp, colors.outlineVariant),
+            shadowElevation = if (colors.surface.luminance() > 0.5f) 2.dp else 0.dp,
+        ) {
+            Row(Modifier.fillMaxWidth().padding(5.dp).selectableGroup()) {
+                val destinations = listOf(
+                    Triple(Home, "首页", R.drawable.ic_primary_nav_home),
+                    Triple(Review, "回看", R.drawable.ic_primary_nav_review),
+                    Triple(Settings, "设置", R.drawable.ic_primary_nav_settings),
+                )
+                destinations.forEach { (destination, label, icon) ->
+                    val selected = currentPrimary == destination
+                    val indicator by animateColorAsState(
+                        targetValue = if (selected) selectionColor else selectionColor.copy(alpha = 0f),
+                        animationSpec = tween(durationMillis = 200),
+                        label = "primary navigation indicator",
                     )
+                    val tint by animateColorAsState(
+                        targetValue = if (selected) colors.onSurface else colors.onSurfaceVariant,
+                        animationSpec = tween(durationMillis = 200),
+                        label = "primary navigation icon",
+                    )
+                    Box(
+                        modifier = Modifier.weight(1f)
+                            .height(48.dp)
+                            .selectable(selected = selected, role = Role.Tab, onClick = { onSelect(destination) })
+                            .semantics { contentDescription = label }
+                            .testTag(when (destination) {
+                                Home -> "tab-now"
+                                Review -> "tab-review"
+                                else -> "tab-settings"
+                            }),
+                        contentAlignment = Alignment.Center,
+                    ) {
+                        Box(Modifier.size(40.dp).background(indicator, CircleShape), contentAlignment = Alignment.Center) {
+                            Icon(painterResource(icon), contentDescription = null, tint = tint, modifier = Modifier.size(24.dp))
+                        }
+                    }
                 }
             }
         }

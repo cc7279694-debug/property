@@ -245,6 +245,7 @@ class P2HomeArchiveContractTest {
                     val nav = compose.onNodeWithTag("p2-bottom-navigation").fetchSemanticsNode()
                     val addBounds = add.fetchSemanticsNode().boundsInRoot
                     assertTrue(addBounds.bottom <= nav.boundsInRoot.top + 1f)
+                    assertFloatingNavigation("$appearance / ${width}dp / fontScale=$font")
                     compose.onAllNodesWithTag("home-open-add-top").assertCountEquals(1)
                     compose.onAllNodesWithTag("home-open-add").assertCountEquals(1)
                     add.assertWidthIsAtLeast(48.dp).assertHeightIsAtLeast(48.dp).assertTextEquals("添加")
@@ -379,6 +380,26 @@ class P2HomeArchiveContractTest {
     }
 
     private fun click(tag: String, scroll: Boolean = true) = assertTouch(tag, scroll).performClick()
+
+    private fun assertFloatingNavigation(configuration: String) {
+        val parent = compose.onNodeWithTag("p2-bottom-navigation").fetchSemanticsNode().boundsInRoot
+        val capsule = compose.onNodeWithTag("lithic-primary-navigation").assertIsDisplayed()
+            .assertWidthIsEqualTo(210.dp).assertHeightIsEqualTo(58.dp)
+            .fetchSemanticsNode().boundsInRoot
+        assertEquals("The capsule stays centered at $configuration", parent.center.x, capsule.center.x, 1f)
+        val tabs = listOf("tab-now", "tab-review", "tab-settings").map { tag ->
+            assertTouch(tag, scroll = false).fetchSemanticsNode().boundsInRoot
+        }
+        for (tab in tabs) {
+            assertEquals("All tabs share a width at $configuration", tabs.first().width, tab.width, 1f)
+            assertTrue("Tabs remain inside the capsule at $configuration",
+                tab.left >= capsule.left && tab.right <= capsule.right &&
+                    tab.top >= capsule.top && tab.bottom <= capsule.bottom)
+        }
+        tabs.zipWithNext().forEach { (left, right) ->
+            assertTrue("Tab targets are ordered and separate at $configuration", left.right <= right.left)
+        }
+    }
 
     @Composable
     private fun TestCanvas(configuration: Canvas = Canvas(), content: @Composable () -> Unit) {

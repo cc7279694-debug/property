@@ -106,9 +106,12 @@ class NavigationShellTest {
     fun only_three_primary_destinations() {
         render()
         assertThreePrimaryTabs()
-        compose.onNodeWithTag("tab-now").assertTextEquals("现在")
-        compose.onNodeWithTag("tab-review").assertTextEquals("回看")
-        compose.onNodeWithTag("tab-settings").assertTextEquals("设置")
+        for ((tag, name) in listOf("tab-now" to "首页", "tab-review" to "回看", "tab-settings" to "设置")) {
+            compose.onNodeWithTag(tag)
+                .assertContentDescriptionEquals(name)
+                .assert(SemanticsMatcher.expectValue(SemanticsProperties.Role, Role.Tab))
+                .assert(SemanticsMatcher.keyIsDefined(SemanticsProperties.Text).not())
+        }
     }
 
     @Test
