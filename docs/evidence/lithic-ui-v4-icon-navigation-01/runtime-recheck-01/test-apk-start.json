@@ -1,0 +1,18 @@
+{
+  "memory_gib": 5.534,
+  "commit": "99272c6ca45d5ce8906da81d0ddce21de4c6578a",
+  "time_utc": "2026-11-16T04:05:29.0546642Z",
+  "args": [
+    "--offline",
+    "--no-daemon",
+    "--console=plain",
+    "--max-workers=1",
+    "--no-configuration-cache",
+    "--no-build-cache",
+    "--no-scan",
+    "-Dorg.gradle.jvmargs=-Xmx1536m -Dfile.encoding=UTF-8",
+    "-Pkotlin.compiler.execution.strategy=in-process",
+    "-Pm13Isolated=true",
+    ":app:assembleDebugAndroidTest"
+  ]
+}

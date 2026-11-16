@@ -78,3 +78,14 @@ GitHub 日志副本仅整理了行尾空白。两次完整原始输出保存在�
 [APK 身份与 SHA](lithic-ui-v4-icon-navigation-01/desktop/apk-identity.json) · [签名原文](lithic-ui-v4-icon-navigation-01/desktop/apk-signature.txt) · [APK 规格](lithic-ui-v4-icon-navigation-01/desktop/apk-badging.txt) · [APK 实际 Manifest](lithic-ui-v4-icon-navigation-01/desktop/apk-manifest.txt)
 
 本轮代码复查确认改动限于底栏视觉、语义与定向断言。构建和静态材料已到 **READY_FOR_INDEPENDENT_REVIEW**。Android 运行状态保留 **ENVIRONMENT_BLOCKED**，原生截图及端侧检查均为 **NOT_RUN**。后续只在可确认的健康隔离环境执行原路由与守卫用例、三主题截图、真实 200% 字体、两种系统导航、IME 与 TalkBack。
+
+## 2026-11-16 · Android 再准入
+
+本次复核起点为已推送的 `99272c6ca45d5ce8906da81d0ddce21de4c6578a`。重新确认远端设计、main、Release 与工作分支，App 树仍为 `5be4adf157641b5cb16e401112046b83f7207c50`。沿用原唯一 App APK。只额外构建仪器测试 APK，离线执行 `-Pm13Isolated=true :app:assembleDebugAndroidTest`，退出 0。实际测试包为 `com.cooper.lithic.debug.test`，目标为 `com.cooper.lithic.debug`，运行器为 `com.cooper.lithic.app.M13IsolatedRunner`，证书匹配原 Debug。测试 APK 尚未安装。[测试 APK 实检](lithic-ui-v4-icon-navigation-01/runtime-recheck-01/test-apk-audit.json) · [构建参数](lithic-ui-v4-icon-navigation-01/runtime-recheck-01/test-apk-start.json) · [构建日志](lithic-ui-v4-icon-navigation-01/runtime-recheck-01/test-apk-build.log)
+
+- 首次主机准备中 Windows SDK ADB 拒绝带明确主机名的 `-L tcp:127.0.0.1:5038`，当时模拟器启动次数为 0。保留日志，改用 `-P 5038 server nodaemon`。独立监听验证为 `127.0.0.1:5038`，初始设备列表为空。[首次主机结果](lithic-ui-v4-icon-navigation-01/runtime-recheck-01/initial-host-preflight.json) · [ADB 错误原文](lithic-ui-v4-icon-navigation-01/runtime-recheck-01/initial-host-adb-error.txt) · [独立监听](lithic-ui-v4-icon-navigation-01/runtime-recheck-01/listeners-during.json)
+- 启动前可用内存 5316 MiB（5.191 GiB），通过 5 GiB 门槛。新建隔离 `Lithic_V4_Icon_API36`，使用已安装的 API36 AOSP/default x86_64 镜像、独立数据目录、1536 MiB 配置。只启动一次，端口为 17640／17641，ADB 通过 5038 自动注册。未复用历史故障 AVD。[启动命令](lithic-ui-v4-icon-navigation-01/runtime-recheck-01/emulator-launch.json) · [模拟器日志](lithic-ui-v4-icon-navigation-01/runtime-recheck-01/emulator-startup.log)
+- 唯一传输 `emulator-17640` 先被采样为 `offline` 42 次，在 **171.593 秒** 首次变为 `device`。**175.984 秒** 调用 `getprop sys.boot_completed` 返回空。180 秒窗口结束前未取得启动完成、Shell 健康及设备身份的完整准入证据。此次阻断原因是准入超时，端侧系统启动原因 `UNKNOWN`。历史 ANR 仍保留原分类。[完整准入命令与响应](lithic-ui-v4-icon-navigation-01/runtime-recheck-01/admission-commands.jsonl) · [准入结果](lithic-ui-v4-icon-navigation-01/runtime-recheck-01/admission-result.json)
+- 终止本轮持有的模拟器进程树及独立 ADB。5038／17640／17641 无残留监听，原 5037 仍为 PID 10636。App 与 Test 安装次数均为 0，Android 测试方法实际执行 0，截图 0。复算原 App Debug 和正式 1.0.1 APK 的 SHA-256，均与先前记录一致。[退出回执](lithic-ui-v4-icon-navigation-01/runtime-recheck-01/runtime-result.json) · [退出监听](lithic-ui-v4-icon-navigation-01/runtime-recheck-01/listeners-after.json)
+
+复核后 Android 仍为 **ENVIRONMENT_BLOCKED**。Android 导航回归、三主题原生截图、实际 200% 系统字体、手势与三键、IME、系统动画关闭、TalkBack 均为 **NOT_RUN**。原桌面结果和 Debug 交付仍为 **READY_FOR_INDEPENDENT_REVIEW**。
