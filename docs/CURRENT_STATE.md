@@ -1,8 +1,10 @@
 # 当前项目状态
 
-状态日期：2026-11-16（Asia/Shanghai）。本文件是唯一实时状态；原件归档和 checkpoints 只记录历史。
+状态日期：2026-11-19（Asia/Shanghai）。本文件是唯一实时状态；原件归档和 checkpoints 只记录历史。
 
 ## Current Stage
+
+- **LITHIC UI V4 R1 · 回看与成本趋势 — PARTIAL（2026-11-19）**。独立回看摘要和完整趋势页已实施；单日期基于完整观测天数显示精确分项。990 项 JVM、生产和 AndroidTest 编译、Debug Lint 和唯一 Debug APK 核验通过。隔离 Android `ENVIRONMENT_BLOCKED`，63 个方法、原生截图及系统字号适配为 `NOT_RUN`。等待独立代码和设计评审，R2 尚未开始。见[实施报告](evidence/LITHIC-UI-V4-R1-REVIEW-TREND-IMPLEMENTATION.md)。
 
 - **LITHIC UI V4 B2 · 首页生产实施 — READY_FOR_DEVICE_ACCEPTANCE（2026-11-16）**。B1 首页视觉接入原生 Compose，生产改动限于首页和可选封面失败展示。985 项 JVM、生产和 AndroidTest 编译、Debug Lint（0 错误／20 警告）及唯一 Debug APK 静态核验通过。Android 三主题截图、系统 200% 字号及设备交互仍 `NOT_RUN`。等待独立审查，B3 尚未执行。见[实施报告](evidence/LITHIC-UI-V4-B2-HOME-IMPLEMENTATION.md)。
 
