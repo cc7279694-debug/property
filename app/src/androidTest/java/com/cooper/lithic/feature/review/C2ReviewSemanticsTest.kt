@@ -1,5 +1,6 @@
 package com.cooper.lithic.feature.review
 
+import androidx.compose.runtime.mutableStateOf
 import androidx.compose.ui.test.assertIsDisplayed
 import androidx.compose.ui.test.assertTextContains
 import androidx.compose.ui.test.hasTestTag
@@ -58,10 +59,10 @@ class C2ReviewSemanticsTest {
             ReviewShell(0, trendState = TotalCostTrendUiState(error = "合成读取失败"), hasReadNotice = true,
                 onRetryTrend = { retries++ })
         } }
-        compose.onNodeWithTag("total-trend-compact-retry").assertIsDisplayed()
         scroll("total-trend-error")
         compose.onNodeWithTag("total-trend-error").assertIsDisplayed()
-        compose.onNodeWithTag("total-trend-retry").performClick()
+        scroll("total-trend-retry")
+        compose.onNodeWithTag("total-trend-retry").assertIsDisplayed().performClick()
         compose.onNodeWithTag("total-trend-empty").assertDoesNotExist()
         compose.onNodeWithText("暂无长期项目或订阅记录").assertDoesNotExist()
         compose.runOnIdle { assertEquals(1, retries) }
@@ -79,19 +80,26 @@ class C2ReviewSemanticsTest {
 
     @Test fun real_zero_is_not_empty_and_exact_date_query_uses_existing_callback() {
         var selected: LocalDate? = null
+        val opened = mutableStateOf(false)
         compose.setContent { LithicTheme {
-            ReviewShell(1, trendState = recordState(), onSelectTrendDate = { selected = it })
+            if (opened.value) {
+                TotalCostTrendScreen(recordState(), { selected = it }, {}, {}, { _, _ -> }, {})
+            } else {
+                ReviewShell(1, trendState = recordState(), onTotalCostTrend = { opened.value = true })
+            }
         } }
         scroll("total-trend-total")
         compose.onNodeWithTag("total-trend-total").assertTextContains("¥0.00", substring = true)
         compose.onNodeWithTag("total-trend-empty").assertDoesNotExist()
-        scroll("total-trend-tools-toggle")
+        scroll("review-total-cost-trend")
+        compose.onNodeWithTag("review-total-cost-trend").performClick()
+        scrollFull("total-trend-tools-toggle")
         compose.onNodeWithTag("total-trend-tools-toggle").performClick()
-        scroll("review-trend-date-toggle")
-        compose.onNodeWithTag("review-trend-date-toggle").performClick()
-        scroll("total-trend-date-input")
+        scrollFull("total-trend-date-toggle")
+        compose.onNodeWithTag("total-trend-date-toggle").performClick()
+        scrollFull("total-trend-date-input")
         compose.onNodeWithTag("total-trend-date-input").performTextReplacement("2026-10-20")
-        scroll("total-trend-date-apply")
+        scrollFull("total-trend-date-apply")
         compose.onNodeWithTag("total-trend-date-apply").performClick()
         compose.runOnIdle { assertEquals(LocalDate.of(2026, 10, 20), selected) }
     }
@@ -120,12 +128,13 @@ class C2ReviewSemanticsTest {
             listOf(OverviewProject("c2-project", "c2-project-category", project)), emptyList()))
         val point = CostTimelineEngine.point(ledger, day)
         return TotalCostTrendUiState(snapshot = ledger,
-            timeline = CostTimeline(day, startedOn, listOf(point), emptyList(), 240, 11, false),
+            timeline = CostTimeline(day, startedOn, listOf(CostTimelineEngine.point(ledger, startedOn), point), emptyList(), 240, 11, false),
             selectedDate = day, selectedPoint = point)
     }
 
     private fun show(state: TotalCostTrendUiState) {
         compose.setContent { LithicTheme { ReviewShell(state.snapshot?.overview?.projects?.size?.toLong() ?: 0, trendState = state) } }
     }
-    private fun scroll(tag: String) = compose.onNodeWithTag("total-cost-trend-screen").performScrollToNode(hasTestTag(tag))
+    private fun scroll(tag: String) = compose.onNodeWithTag("review-screen").performScrollToNode(hasTestTag(tag))
+    private fun scrollFull(tag: String) = compose.onNodeWithTag("total-cost-trend-screen").performScrollToNode(hasTestTag(tag))
 }

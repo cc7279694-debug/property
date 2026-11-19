@@ -3,11 +3,12 @@ package com.cooper.lithic.feature.review
 import androidx.compose.ui.test.assertIsDisplayed
 import androidx.compose.ui.test.assertIsEnabled
 import androidx.compose.ui.test.assertTextContains
+import androidx.compose.ui.test.hasTestTag
 import androidx.compose.ui.test.junit4.createComposeRule
 import androidx.compose.ui.test.onNodeWithTag
 import androidx.compose.ui.test.onNodeWithText
 import androidx.compose.ui.test.performClick
-import androidx.compose.ui.test.performScrollTo
+import androidx.compose.ui.test.performScrollToNode
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.cooper.lithic.core.design.LithicTheme
 import org.junit.Assert.assertEquals
@@ -22,7 +23,9 @@ class P02ReviewShellSemanticsTest {
 
     @Test fun subscription_only_summary_reports_both_real_counts_and_history_scope() {
         compose.setContent { LithicTheme { ReviewShell(0L, subscriptionCount = 2L) } }
-        // Count scope is still available, now behind the existing information action.
+        compose.onNodeWithTag("review-summary-project-count").assertTextContains("0", substring = true).assertIsDisplayed()
+        compose.onNodeWithTag("review-summary-subscription-count").assertTextContains("2", substring = true).assertIsDisplayed()
+        compose.onNodeWithTag("review-summary-scope").assertTextContains("历史", substring = true).assertIsDisplayed()
         compose.onNodeWithTag("review-information").performClick()
         compose.onNodeWithTag("review-subscription-count")
             .assertTextContains("2 条订阅服务", substring = true).assertIsDisplayed()
@@ -62,7 +65,8 @@ class P02ReviewShellSemanticsTest {
         } }
         listOf("review-category-analysis", "review-annual", "review-total-cost-trend",
             "review-long-term", "review-project-history", "review-subscription-history").forEach { tag ->
-            compose.onNodeWithTag(tag).performScrollTo().assertIsEnabled().performClick()
+            compose.onNodeWithTag("review-screen").performScrollToNode(hasTestTag(tag))
+            compose.onNodeWithTag(tag).assertIsEnabled().performClick()
         }
         assertEquals(listOf("categories", "annual", "trend", "ranks", "projects", "subscriptions"), opened)
     }

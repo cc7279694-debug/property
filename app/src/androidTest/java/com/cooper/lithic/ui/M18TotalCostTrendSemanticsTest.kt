@@ -12,7 +12,7 @@ import androidx.compose.ui.unit.Density
 import androidx.compose.ui.unit.dp
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.cooper.lithic.core.design.LithicTheme
-import com.cooper.lithic.core.design.AmountFormatter
+import com.cooper.lithic.core.design.moneyMetricDisplay
 import com.cooper.lithic.core.model.LongTermProject
 import com.cooper.lithic.core.model.Money
 import com.cooper.lithic.core.model.MoneyDirection
@@ -47,7 +47,7 @@ class M18TotalCostTrendSemanticsTest {
         scroll("total-trend-project")
         compose.onNodeWithTag("total-trend-project").assertTextContains("−", substring = true)
         scroll("total-trend-subscription")
-        compose.onNodeWithTag("total-trend-subscription").assertTextContains(AmountFormatter.formatDailyRate(BigDecimal.TEN))
+        compose.onNodeWithTag("total-trend-subscription").assertTextEquals(moneyMetricDisplay(BigDecimal.TEN))
         scroll("total-trend-details-toggle"); compose.onNodeWithTag("total-trend-details-toggle").performClick()
         compose.onNodeWithTag("total-trend-selected-status").assertTextContains("正负贡献相抵为0", substring = true)
     }
@@ -67,7 +67,7 @@ class M18TotalCostTrendSemanticsTest {
         compose.onNodeWithTag("total-trend-canvas").assertContentDescriptionEquals(
             "总日均成本实线、长期项目长虚线、订阅短虚线阶梯，共同日期和金额尺度。负值保留。下方可输入日期和查看文字清单。纵轴：负10.00元/天 至 10.00元/天；按自然日绘制。")
         scroll("total-trend-total")
-        compose.onNodeWithTag("total-trend-total").assertTextContains(AmountFormatter.formatDailyRate(BigDecimal.ZERO))
+        compose.onNodeWithTag("total-trend-total").assertTextEquals(moneyMetricDisplay(BigDecimal.ZERO))
     }
 
     @Test fun exact_date_text_entry_avoids_drag_and_future_is_rejected() {

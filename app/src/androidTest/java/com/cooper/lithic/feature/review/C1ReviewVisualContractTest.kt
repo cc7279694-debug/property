@@ -67,11 +67,11 @@ class C1ReviewVisualContractTest {
         compose.runOnIdle { trend.value = emptyState().copy(error = "合成读取失败") }
         compose.onNodeWithTag("review-empty-state").assertDoesNotExist()
         compose.onNodeWithTag("total-trend-empty").assertDoesNotExist()
-        compose.onNodeWithTag("total-trend-compact-retry").assertIsDisplayed()
-        compose.onNodeWithTag("total-cost-trend-screen").performScrollToNode(hasTestTag("total-trend-error"))
+        compose.onNodeWithTag("review-screen").performScrollToNode(hasTestTag("total-trend-error"))
         compose.onNodeWithTag("total-trend-error").assertIsDisplayed()
         compose.onNodeWithTag("review-empty-identity").assertDoesNotExist()
-        compose.onNodeWithTag("total-trend-retry").performClick()
+        compose.onNodeWithTag("review-screen").performScrollToNode(hasTestTag("total-trend-retry"))
+        compose.onNodeWithTag("total-trend-retry").assertIsDisplayed().assertHeightIsAtLeast(48.dp).performClick()
         assertEquals(1, retries)
     }
 
@@ -108,9 +108,9 @@ class C1ReviewVisualContractTest {
 
     @Test fun normal_400dp_destinations_are_compact_and_keep_all_callbacks() {
         showDestinations(400f, 1f)
-        val row = compose.onNodeWithTag("review-category-analysis").performScrollTo().assertIsDisplayed().fetchSemanticsNode()
-        assertTrue("Normal row should keep the 56dp compact layout", row.size.height <= 64f * pixelsPerDp)
-        compose.onNodeWithText("项目与订阅分列", useUnmergedTree = true).assertDoesNotExist()
+        val row = destination("review-category-analysis").assertIsDisplayed().fetchSemanticsNode()
+        assertTrue("A normal row should stay compact with its subtitle", row.size.height <= 64f * pixelsPerDp)
+        compose.onNodeWithText("项目与订阅分列", useUnmergedTree = true).assertIsDisplayed()
         checkDestinations()
     }
 
@@ -136,11 +136,16 @@ class C1ReviewVisualContractTest {
         val canvas = compose.onNodeWithTag("c1-review-canvas").fetchSemanticsNode()
         listOf("review-total-cost-trend", "review-category-analysis", "review-annual", "review-long-term",
             "review-project-history", "review-subscription-history").forEach { tag ->
-            val row = compose.onNodeWithTag(tag).performScrollTo().assertIsDisplayed().fetchSemanticsNode()
+            val row = destination(tag).assertIsDisplayed().fetchSemanticsNode()
             assertTrue("Minimum target in the controlled local density", row.size.height >= 48f * pixelsPerDp - 1f)
             assertTrue(row.positionInRoot.x >= canvas.positionInRoot.x - 1f)
             assertTrue(row.positionInRoot.x + row.size.width <= canvas.positionInRoot.x + canvas.size.width + 1f)
         }
+    }
+
+    private fun destination(tag: String): SemanticsNodeInteraction {
+        compose.onNodeWithTag("review-screen").performScrollToNode(hasTestTag(tag))
+        return compose.onNodeWithTag(tag)
     }
 
     private fun emptyState() = TotalCostTrendUiState(snapshot = LedgerSnapshot(OverviewSnapshot(emptyList(), emptyList(), emptyList())),

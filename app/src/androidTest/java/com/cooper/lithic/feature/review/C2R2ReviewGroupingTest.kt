@@ -4,9 +4,11 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.requiredSize
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.test.assertIsDisplayed
+import androidx.compose.ui.test.hasTestTag
 import androidx.compose.ui.test.junit4.createComposeRule
 import androidx.compose.ui.test.onNodeWithTag
 import androidx.compose.ui.test.performClick
+import androidx.compose.ui.test.performScrollToNode
 import androidx.compose.ui.unit.dp
 import com.cooper.lithic.core.design.LithicTheme
 import org.junit.Assert.assertEquals
@@ -25,12 +27,17 @@ class C2R2ReviewGroupingTest {
                 onAnnualReview = { selected += "annual" },
                 onLongTermReview = { selected += "long-term" })
         } } }
+        scroll("review-analysis-group")
         compose.onNodeWithTag("review-analysis-group").assertIsDisplayed()
-        compose.onNodeWithTag("review-category-analysis").performClick()
-        compose.onNodeWithTag("review-annual").performClick()
-        compose.onNodeWithTag("review-long-term").performClick()
+        listOf("review-category-analysis", "review-annual", "review-long-term").forEach { tag ->
+            scroll(tag)
+            compose.onNodeWithTag(tag).performClick()
+        }
         assertEquals(listOf("category", "annual", "long-term"), selected)
         compose.onNodeWithTag("total-trend-canvas").assertDoesNotExist()
+        scroll("review-trend-unavailable")
         compose.onNodeWithTag("review-trend-unavailable").assertIsDisplayed()
     }
+
+    private fun scroll(tag: String) = compose.onNodeWithTag("review-screen").performScrollToNode(hasTestTag(tag))
 }

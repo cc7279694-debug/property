@@ -244,8 +244,69 @@ class C5R1TrendPresentationTest {
         assertSame(pending.timeline!!.events, trendEventsForDisplay(pending, allDates = true))
     }
 
-    private fun ready(asOf: LocalDate = day, outlayCents: Long = 10_000, recoveryCents: Long = 0): TotalCostTrendUiState {
-        val start = asOf.minusDays(9)
+    @Test fun one_observed_date_is_distinct_from_a_confirmed_empty_timeline() {
+        val state = ready(observedDays = 1)
+        val timeline = requireNotNull(state.timeline)
+
+        assertEquals(1L, timeline.evaluatedDayCount)
+        assertEquals(timeline.asOf, timeline.from)
+        assertTrue(trendHasSingleDate(timeline))
+        assertFalse(trendHasSingleDate(requireNotNull(empty().timeline)))
+    }
+
+    @Test fun one_real_event_does_not_shorten_a_multi_date_observation_even_with_one_retained_point() {
+        val state = ready()
+        val snapshot = requireNotNull(state.snapshot).copy(events = listOf(
+            TotalCostEvent("single-event", day.minusDays(9), OverviewKind.PROJECT,
+                "r1-project", "合成项目", "投入", "同日录入", amountCents = 10_000)
+        ))
+        val timeline = TimelineSampler.sample(snapshot, day)
+
+        assertEquals(10L, timeline.evaluatedDayCount)
+        assertEquals(1, timeline.events.size)
+        assertFalse(trendHasSingleDate(timeline))
+        // The original observation bounds still govern a plot even if a presentation receives fewer display points.
+        assertFalse(trendHasSingleDate(timeline.copy(points = listOf(timeline.points.last()))))
+    }
+
+    @Test fun a_sampled_constant_zero_timeline_remains_a_multi_date_observation() {
+        val state = ready(outlayCents = 0, observedDays = 730)
+        val timeline = TimelineSampler.sample(requireNotNull(state.snapshot), day, basePointBudget = 12)
+
+        assertEquals(730L, timeline.evaluatedDayCount)
+        assertTrue(timeline.sampled)
+        assertTrue(timeline.points.size.toLong() < timeline.evaluatedDayCount)
+        assertTrue(timeline.points.all { it.totalRate.signum() == 0 })
+        assertFalse(trendHasSingleDate(timeline))
+        assertTrue(requireNotNull(totalTrendPresentation(state).selected).hasActiveContributions)
+    }
+
+    @Test fun a_single_date_with_a_pending_selection_cannot_borrow_its_only_retained_amount() {
+        val state = ready(observedDays = 1, outlayCents = 0)
+        val pending = state.copy(selectedDate = day.minusDays(1))
+
+        assertTrue(trendHasSingleDate(requireNotNull(pending.timeline)))
+        assertNull(totalTrendPresentation(pending).selected)
+        assertFalse(totalTrendPresentation(pending).showEmpty)
+        assertEquals(0, requireNotNull(totalTrendPresentation(state).selected).totalRate.signum())
+    }
+
+    @Test fun recent_events_keep_the_same_first_three_facts_as_full_history_with_same_day_ties() {
+        fun event(id: String, date: LocalDate) = TotalCostEvent(id, date, OverviewKind.PROJECT,
+            "r1-project", "合成项目", "投入", "原始事件 $id", amountCents = 100)
+        // The sampler supplies oldest date first and then ascending ID within the same day.
+        val older = event("earlier", day.minusDays(1))
+        val sameDay = listOf("a", "b", "c", "d", "e").map { event(it, day) }
+        val preview = trendRecentEvents(listOf(older) + sameDay)
+
+        assertEquals(listOf("a", "b", "c"), preview.map { it.id })
+        preview.forEachIndexed { index, fact -> assertSame(sameDay[index], fact) }
+        assertTrue(trendRecentEvents(emptyList()).isEmpty())
+    }
+
+    private fun ready(asOf: LocalDate = day, outlayCents: Long = 10_000, recoveryCents: Long = 0,
+        observedDays: Long = 10): TotalCostTrendUiState {
+        val start = asOf.minusDays(observedDays - 1)
         val events = mutableListOf(ProjectMoneyEvent(MoneyDirection.OUTLAY, Money(outlayCents), start))
         if (recoveryCents > 0) events += ProjectMoneyEvent(MoneyDirection.RECOVERY, Money(recoveryCents), asOf)
         val project = ProjectSnapshot(LongTermProject(start), events)

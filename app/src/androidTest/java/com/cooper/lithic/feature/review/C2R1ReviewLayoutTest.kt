@@ -2,9 +2,10 @@ package com.cooper.lithic.feature.review
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.requiredSize
+import androidx.compose.runtime.mutableStateOf
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.test.assertIsDisplayed
-import androidx.compose.ui.test.assertTextContains
+import androidx.compose.ui.test.assertTextEquals
 import androidx.compose.ui.test.hasTestTag
 import androidx.compose.ui.test.junit4.createComposeRule
 import androidx.compose.ui.test.onNodeWithTag
@@ -33,28 +34,37 @@ import org.junit.Test
 class C2R1ReviewLayoutTest {
     @get:Rule val compose = createComposeRule()
 
-    @Test fun real_plot_is_visible_without_scrolling_at_360_by_800_normal_font() {
+    @Test fun compact_total_plot_is_visible_without_full_trend_tools_at_360_by_800() {
         compose.setContent { LithicTheme { Box(Modifier.requiredSize(360.dp, 800.dp)) {
             ReviewShell(1, trendState = state())
         } } }
-        compose.onNodeWithTag("total-trend-total").assertTextContains("¥10.00")
+        compose.onNodeWithTag("total-trend-total").assertTextEquals("¥10.00/天")
         compose.onNodeWithTag("total-trend-canvas").assertIsDisplayed()
+        compose.onNodeWithTag("total-trend-legend-project").assertDoesNotExist()
+        compose.onNodeWithTag("total-trend-tools-toggle").assertDoesNotExist()
     }
 
     @Test fun contributions_and_exact_date_access_survive_the_more_compact_first_screen() {
         var breakdowns = 0
+        val opened = mutableStateOf(false)
         compose.setContent { LithicTheme { Box(Modifier.requiredSize(360.dp, 800.dp)) {
-            ReviewShell(1, trendState = state(), onToggleTrendBreakdown = { breakdowns++ })
+            if (opened.value) {
+                TotalCostTrendScreen(state(), {}, { breakdowns++ }, {}, { _, _ -> }, {})
+            } else {
+                ReviewShell(1, trendState = state(), onTotalCostTrend = { opened.value = true })
+            }
         } } }
+        compose.onNodeWithTag("review-screen").performScrollToNode(hasTestTag("review-total-cost-trend"))
+        compose.onNodeWithTag("review-total-cost-trend").performClick()
         compose.onNodeWithTag("total-cost-trend-screen").performScrollToNode(hasTestTag("total-trend-project"))
-        compose.onNodeWithTag("total-trend-project").assertTextContains("¥10.00")
+        compose.onNodeWithTag("total-trend-project").assertTextEquals("¥10.00/天")
         compose.onNodeWithTag("total-cost-trend-screen").performScrollToNode(hasTestTag("total-trend-tools-toggle"))
         compose.onNodeWithTag("total-trend-tools-toggle").performClick()
         compose.onNodeWithTag("total-cost-trend-screen").performScrollToNode(hasTestTag("total-trend-breakdown"))
         compose.onNodeWithTag("total-trend-breakdown").performClick()
         assertEquals(1, breakdowns)
-        compose.onNodeWithTag("total-cost-trend-screen").performScrollToNode(hasTestTag("review-trend-date-toggle"))
-        compose.onNodeWithTag("review-trend-date-toggle").performClick()
+        compose.onNodeWithTag("total-cost-trend-screen").performScrollToNode(hasTestTag("total-trend-date-toggle"))
+        compose.onNodeWithTag("total-trend-date-toggle").performClick()
         compose.onNodeWithTag("total-cost-trend-screen").performScrollToNode(hasTestTag("total-trend-date-input"))
         compose.onNodeWithTag("total-trend-date-input").assertIsDisplayed()
     }

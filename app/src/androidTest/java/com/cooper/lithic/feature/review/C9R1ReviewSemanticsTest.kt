@@ -21,6 +21,7 @@ import com.cooper.lithic.feature.appearance.LithicAppearance
 import com.cooper.lithic.ui.C2VisualFixtures
 import java.math.BigDecimal
 import org.junit.Assert.assertEquals
+import org.junit.Assert.assertTrue
 import org.junit.Rule
 import org.junit.Test
 
@@ -33,15 +34,15 @@ class C9R1ReviewSemanticsTest {
     @get:Rule val compose = createComposeRule()
     private val facts = C2VisualFixtures(populated = true)
 
-    @Test fun three_themes_keep_exact_review_selection_units_and_distinct_legend_at_large_font() {
+    @Test fun three_themes_keep_exact_trend_selection_units_and_distinct_legend_at_large_font() {
         val theme = mutableStateOf(LithicAppearance.STONE_MIST)
         var selections = 0
         compose.setContent {
             val density = LocalDensity.current
             CompositionLocalProvider(LocalDensity provides Density(density.density, 2f)) {
                 LithicTheme(appearance = theme.value) { Box(Modifier.requiredSize(360.dp, 1000.dp)) {
-                    ReviewShell(1, subscriptionCount = 1, trendState = facts.trend.copy(showBreakdown = true),
-                        onSelectTrendDate = { selections++ })
+                    TotalCostTrendScreen(facts.trend.copy(showBreakdown = true), onSelectDate = { selections++ },
+                        onToggleBreakdown = {}, onRetry = {}, onOpenRecord = { _, _ -> }, onBack = {})
                 } }
             }
         }
@@ -60,20 +61,20 @@ class C9R1ReviewSemanticsTest {
         }
     }
 
-    @Test fun unit_slot_and_plot_frame_remain_stable_from_waiting_through_reading_to_ready() {
+    @Test fun unit_slot_stays_inside_the_trend_surface_from_waiting_through_reading_to_ready() {
         val ui = mutableStateOf(TotalCostTrendUiState())
         compose.setContent { LithicTheme { Box(Modifier.requiredSize(400.dp, 1200.dp)) {
-            ReviewShell(1, subscriptionCount = 1, trendState = ui.value)
+            TotalCostTrendScreen(ui.value, {}, {}, {}, { _, _ -> }, {})
         } } }
         val frame = compose.onNodeWithTag("total-trend-plot-frame").fetchSemanticsNode().boundsInRoot
-        val unit = compose.onNodeWithTag("total-trend-axis-unit").fetchSemanticsNode().boundsInRoot
         listOf(TotalCostTrendUiState(loading = true), facts.trend).forEach { state ->
             compose.runOnIdle { ui.value = state }
             val currentFrame = compose.onNodeWithTag("total-trend-plot-frame").fetchSemanticsNode().boundsInRoot
             val currentUnit = compose.onNodeWithTag("total-trend-axis-unit").fetchSemanticsNode().boundsInRoot
             assertEquals(frame.top, currentFrame.top, 1f)
-            assertEquals(frame.height, currentFrame.height, 1f)
-            assertEquals(unit.top, currentUnit.top, 1f)
+            assertEquals(frame.width, currentFrame.width, 1f)
+            assertTrue("Axis label stays inside the overview surface", currentUnit.top >= currentFrame.top)
+            assertTrue("Axis label stays inside the overview surface", currentUnit.bottom <= currentFrame.bottom)
             compose.onNodeWithTag("total-trend-axis-unit").assertTextEquals("纵轴 · 元/天")
         }
     }

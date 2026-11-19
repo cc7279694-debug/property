@@ -20,6 +20,7 @@ import com.cooper.lithic.domain.report.TotalCostEvent
 import com.cooper.lithic.ui.C2VisualFixtures
 import java.time.LocalDate
 import org.junit.Assert.assertEquals
+import org.junit.Assert.assertTrue
 import org.junit.Rule
 import org.junit.Test
 
@@ -33,7 +34,7 @@ class C5R1ReviewStabilityTest {
     @get:Rule val compose = createComposeRule()
     private val facts = C2VisualFixtures(true)
 
-    @Test fun first_waiting_reading_and_ready_frames_keep_plot_and_analysis_positions() {
+    @Test fun first_waiting_and_reading_reserve_the_summary_and_ready_keeps_analysis_reachable() {
         val ui = mutableStateOf(TotalCostTrendUiState())
         showReview({ ui.value })
         compose.onNodeWithTag("total-trend-loading-placeholder").assertExists()
@@ -52,8 +53,11 @@ class C5R1ReviewStabilityTest {
             .assertTextEquals(moneyMetricDisplay(requireNotNull(facts.trend.selectedPoint).totalRate))
         compose.onNodeWithTag("total-trend-canvas").assertExists()
         compose.onNodeWithTag("total-trend-loading-placeholder").assertDoesNotExist()
-        sameLayout(plot, "total-trend-plot-frame")
-        sameLayout(menu, "review-category-analysis")
+        val ready = stamp("total-trend-plot-frame")
+        assertEquals(plot.x, ready.x, 1f)
+        assertEquals(plot.width, ready.width, 1f)
+        assertTrue(ready.height > 0f)
+        scrollReview("review-category-analysis").assertIsDisplayed().assertHeightIsAtLeast(48.dp)
     }
 
     @Test fun same_snapshot_refresh_keeps_selected_date_plot_and_visible_old_cutoff() {
@@ -63,7 +67,7 @@ class C5R1ReviewStabilityTest {
         val ui = mutableStateOf(retained)
         showReview({ ui.value })
         val date = stamp("total-trend-selected-date")
-        val plot = stamp("total-trend-plot-frame")
+        val plot = stamp("total-trend-canvas")
         val amount = moneyMetricDisplay(requireNotNull(retained.selectedPoint).totalRate)
 
         compose.runOnIdle { ui.value = retained.copy(loading = true) }
@@ -73,11 +77,11 @@ class C5R1ReviewStabilityTest {
         compose.onNodeWithTag("total-trend-cutoff").assertTextContains(facts.day.toString(), substring = true)
         compose.onNodeWithTag("total-trend-loading-placeholder").assertDoesNotExist()
         sameLayout(date, "total-trend-selected-date")
-        sameLayout(plot, "total-trend-plot-frame")
+        sameSize(plot, "total-trend-canvas")
 
         compose.runOnIdle { ui.value = retained }
         sameLayout(date, "total-trend-selected-date")
-        sameLayout(plot, "total-trend-plot-frame")
+        sameLayout(plot, "total-trend-canvas")
         compose.onNodeWithTag("total-trend-total").assertTextEquals(amount)
     }
 
@@ -87,19 +91,19 @@ class C5R1ReviewStabilityTest {
         showReview({ ui.value }, onRetry = { retries++ })
         compose.onNodeWithTag("review-empty-state").assertDoesNotExist()
         compose.onNodeWithTag("total-trend-canvas").assertDoesNotExist()
-        scroll("total-trend-error").assertIsDisplayed()
+        scrollReview("total-trend-error").assertIsDisplayed()
         compose.onNodeWithText("合成首读失败").assertExists()
-        scroll("total-trend-retry").assertHeightIsAtLeast(48.dp).performClick()
+        scrollReview("total-trend-retry").assertHeightIsAtLeast(48.dp).performClick()
         assertEquals(1, retries)
 
         compose.runOnIdle { ui.value = facts.trend.copy(error = "合成刷新失败，保留旧图") }
-        scroll("total-trend-canvas").assertIsDisplayed()
+        scrollReview("total-trend-canvas").assertIsDisplayed()
         compose.onNodeWithTag("total-trend-total")
             .assertTextEquals(moneyMetricDisplay(requireNotNull(facts.trend.selectedPoint).totalRate))
-        scroll("total-trend-cutoff").assertTextContains(facts.day.toString(), substring = true)
-        scroll("total-trend-error").assertIsDisplayed()
+        scrollReview("total-trend-cutoff").assertTextContains(facts.day.toString(), substring = true)
+        scrollReview("total-trend-error").assertIsDisplayed()
         compose.onNodeWithText("合成刷新失败，保留旧图").assertExists()
-        scroll("total-trend-retry").performClick()
+        scrollReview("total-trend-retry").performClick()
         assertEquals(2, retries)
     }
 
@@ -107,7 +111,9 @@ class C5R1ReviewStabilityTest {
         val requested = facts.day.minusDays(1)
         val pending = facts.trend.copy(selectedDate = requested, loading = false)
         // The deliberately mismatched old point exercises the presentation date fence.
-        showReview({ pending })
+        compose.setContent { LithicTheme { Box(Modifier.requiredSize(400.dp, 1200.dp)) {
+            TotalCostTrendScreen(pending, {}, {}, {}, { _, _ -> }, {})
+        } } }
         compose.onNodeWithTag("total-trend-selected-date").assertTextEquals(requested.toString())
         compose.onNodeWithTag("total-trend-total").assertDoesNotExist()
         compose.onNodeWithTag("total-trend-project").assertDoesNotExist()
@@ -129,7 +135,8 @@ class C5R1ReviewStabilityTest {
         compose.onNodeWithTag("total-trend-loading-placeholder").assertExists()
         compose.onNodeWithTag("total-trend-canvas").assertDoesNotExist()
         compose.onNodeWithTag("total-trend-selected-date").assertDoesNotExist()
-        compose.onNodeWithTag("total-trend-cutoff").assertTextEquals("截止日期待读取")
+        compose.onNodeWithTag("total-trend-date-pending").assertTextEquals("日期待读取")
+        compose.onNodeWithTag("total-trend-cutoff").assertDoesNotExist()
         compose.onNodeWithTag("total-trend-total").assertDoesNotExist()
         compose.onNodeWithTag("total-trend-project").assertDoesNotExist()
         compose.onNodeWithTag("total-trend-subscription").assertDoesNotExist()
@@ -184,9 +191,9 @@ class C5R1ReviewStabilityTest {
             compose.onNodeWithTag("review-empty-state").assertDoesNotExist()
             compose.onNodeWithTag("total-trend-empty").assertDoesNotExist()
             compose.onNodeWithText("记下一件物品后，在这里看见成本变化").assertDoesNotExist()
-            scroll("total-trend-loading-placeholder").assertIsDisplayed()
-            scroll("total-trend-record-count-notice").assertTextContains("趋势事实尚需核对")
-            scroll("total-trend-cutoff").assertTextEquals("截至 $oldDay")
+            scrollReview("total-trend-loading-placeholder").assertIsDisplayed()
+            scrollReview("total-trend-record-count-notice").assertTextContains("趋势事实尚需核对", substring = true)
+            scrollReview("total-trend-cutoff").assertTextEquals("截至 $oldDay")
             compose.onNodeWithTag("total-trend-total").assertDoesNotExist()
             compose.onNodeWithTag("total-trend-total-pending").assertTextEquals("—")
             compose.onNodeWithTag("total-trend-canvas").assertDoesNotExist()
@@ -195,7 +202,7 @@ class C5R1ReviewStabilityTest {
         compose.runOnIdle { projects.value = 0L; subscriptions.value = 1L }
         checkRecheck()
         compose.runOnIdle { projects.value = 1L; ui.value = facts.trend }
-        scroll("total-trend-total").assertTextEquals(moneyMetricDisplay(requireNotNull(facts.trend.selectedPoint).totalRate))
+        scrollReview("total-trend-total").assertTextEquals(moneyMetricDisplay(requireNotNull(facts.trend.selectedPoint).totalRate))
         compose.onNodeWithTag("total-trend-record-count-notice").assertDoesNotExist()
         compose.runOnIdle { projects.value = 0L; subscriptions.value = 0L; ui.value = oldEmpty }
         compose.onNodeWithTag("review-empty-state").assertExists()
@@ -208,9 +215,9 @@ class C5R1ReviewStabilityTest {
             ReviewShell(2, subscriptionCount = 1, trendState = facts.trend)
         } } }
         compose.onNodeWithTag("review-empty-state").assertDoesNotExist()
-        scroll("total-trend-total").assertTextEquals(moneyMetricDisplay(requireNotNull(facts.trend.selectedPoint).totalRate))
-        scroll("total-trend-cutoff").assertTextEquals("截至 ${facts.day}")
-        scroll("total-trend-record-count-notice").assertTextContains("趋势事实尚需核对")
+        scrollReview("total-trend-total").assertTextEquals(moneyMetricDisplay(requireNotNull(facts.trend.selectedPoint).totalRate))
+        scrollReview("total-trend-cutoff").assertTextEquals("截至 ${facts.day}")
+        scrollReview("total-trend-record-count-notice").assertTextContains("趋势事实尚需核对", substring = true)
         compose.onNodeWithTag("total-trend-canvas").assertExists()
         compose.onNodeWithTag("total-trend-empty").assertDoesNotExist()
     }
@@ -279,8 +286,19 @@ class C5R1ReviewStabilityTest {
         assertEquals("$tag width", expected.width, actual.width, 1f)
         assertEquals("$tag height", expected.height, actual.height, 1f)
     }
+
+    private fun sameSize(expected: LayoutStamp, tag: String) {
+        val actual = stamp(tag)
+        assertEquals("$tag width", expected.width, actual.width, 1f)
+        assertEquals("$tag height", expected.height, actual.height, 1f)
+    }
     private fun scroll(tag: String): SemanticsNodeInteraction {
         compose.onNodeWithTag("total-cost-trend-screen").performScrollToNode(hasTestTag(tag))
+        return compose.onNodeWithTag(tag)
+    }
+
+    private fun scrollReview(tag: String): SemanticsNodeInteraction {
+        compose.onNodeWithTag("review-screen").performScrollToNode(hasTestTag(tag))
         return compose.onNodeWithTag(tag)
     }
 }

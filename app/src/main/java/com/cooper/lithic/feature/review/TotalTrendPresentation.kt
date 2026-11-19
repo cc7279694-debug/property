@@ -1,5 +1,6 @@
 package com.cooper.lithic.feature.review
 
+import com.cooper.lithic.domain.report.CostTimeline
 import com.cooper.lithic.domain.report.TotalCostEvent
 import com.cooper.lithic.domain.report.CostTimelinePoint
 import java.time.LocalDate
@@ -49,4 +50,30 @@ internal fun trendEventsForDisplay(state: TotalCostTrendUiState, allDates: Boole
     val presentation = totalTrendPresentation(state)
     if (!presentation.hasRecords) return null
     return if (allDates) state.timeline!!.events else state.events.takeIf { presentation.selected != null }
+}
+
+internal val trendEventOrder = compareByDescending<TotalCostEvent> { it.date }.thenBy { it.id }
+
+/** Retains the first three events in archive order without sorting the full timeline. */
+internal fun trendRecentEvents(events: List<TotalCostEvent>): List<TotalCostEvent> {
+    val recent = ArrayList<TotalCostEvent>(3)
+    for (event in events) {
+        val index = recent.indexOfFirst { trendEventOrder.compare(event, it) < 0 }
+        if (index >= 0) recent.add(index, event)
+        else if (recent.size < 3) recent.add(event)
+        if (recent.size > 3) recent.removeAt(3)
+    }
+    return recent
+}
+
+/** Retained display points and recorded events do not determine the full observed range. */
+internal fun trendHasSingleDate(timeline: CostTimeline): Boolean =
+    timeline.evaluatedDayCount == 1L && timeline.from == timeline.asOf
+
+internal fun trendSelectionMeaning(point: CostTimelinePoint): String = when {
+    !point.hasRecords -> "该日尚未有已录入记录生效；不是当年没有花钱的证明。"
+    !point.hasActiveContributions -> "该日没有有效成本贡献；项目结束日退出，暂停、到期、停止或无付费覆盖的订阅贡献为0。"
+    point.isCancellationZero -> "该日正负贡献相互抵消为0；两类小计和真实负值均保留。"
+    point.totalRate.signum() == 0 -> "该日存在有效记录，按已录入事实计算的真实成本为0。"
+    else -> "该日有效贡献：${point.activeProjectCount}个长期项目、${point.activeSubscriptionCount}个订阅。已结束项目后续结算只作相关事件，不重新加入总额。"
 }
