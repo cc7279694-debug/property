@@ -1,0 +1,57 @@
+# 砺石 V4-R0 非首页视觉审查
+
+源码对照固定为 `2217e4ed8a10999914d83dda40bd21c1ed6109db`。从 `NavDisplay` 的 38 个 `entry` 反查，共 37 个非首页条目，包括同组件承载的操作和功能开关下的兼容入口。另核查非导航承载的表单、弹层与账本启动状态。以下「风险」来自源码静态审阅，原生实际裁切、200% 字体、IME、辅助技术与真机视觉 `NOT_RUN`。[路由实现](../../../app/src/main/java/com/cooper/lithic/app/LithicNavigation.kt#L480) · [B2 冻结基线](https://github.com/cc7279694-debug/property/blob/b09563ea60dfe8fd5c201437b46c4cd60653cf52/docs/design/lithic-ui-v4-b1-home-design-freeze/HOME_DESIGN_FREEZE.md)
+
+## 一、回看与分析
+
+| 页面 | 当前结构与问题 | R0 对齐和验证重点 |
+| --- | --- | --- |
+| 回看首页 | `ReviewShell` 复用趋势页 `summaryOnly`，接在主金额后的仍是图例、画布、贡献和日期工具，再接分析与历史入口。待核对快照时有两句连续提醒。空账本已独立显示去首页记录，三块叠加图形占一段高度。 | 首屏让主金额、足够精简的趋势和分析入口可被扫读。提醒并置在一个状态块，保留最新状态未确认、数据截止和重试。两类历史归档及说明都有明确入口。验证大字和空账本下仍可发现首个动作。[ReviewShell.kt](../../../app/src/main/java/com/cooper/lithic/feature/review/ReviewShell.kt#L43) |
+| 成本趋势 | 完整趋势的图例、选日、分项、查询、文字点位和事件都有原入口。普通图高 240dp，回看摘要 172dp，单个绘图点仍占同样高度。零绘图点且账本有历史的分支也保留固定高占位。 | 到一条有效绘图事实时改用该日期的真实金额和分项，保留日期工具、实际事件及文字路径，避免用空大图暗示趋势。多点保留共同坐标、负值、非颜色区分和可访问选日。等待／失败保留出处与重试，避免与确认空混用。验证大字、多行图例、横拖与纵滚。[TotalCostTrendScreen.kt](../../../app/src/main/java/com/cooper/lithic/feature/review/TotalCostTrendScreen.kt#L136) · [画布](../../../app/src/main/java/com/cooper/lithic/feature/review/TotalCostTrendScreen.kt#L356) |
+| 类别分析 | 类型切换、类别按钮、贡献、年度事实、记录相继出现。类别多时按钮换行把金额推下，旧类别合并或刷新异常时另见反馈。 | 明确分开类型选择与当前类别。类别较多时用定高可滚选择，页面金额前只显示当前类别。保留「当前分类」口径、无年份、无记录、错误保留和继续加载。同类型选择可扫读且长名可完整找到。[CategoryAnalysisScreen.kt](../../../app/src/main/java/com/cooper/lithic/feature/category/CategoryAnalysisScreen.kt#L19) |
+| 年度回顾 | 年份输入加「查看」、上一／下一和说明位于金额前，下面按长期项目、订阅、类别以及多年趋势和相关记录连续列出。200% 字体时输入与按钮并排可能压窄年份字段。 | 把真实投入／收回／净投入和订阅付款提到首个结果区。年份控制允许折行，年度构成与历史置后。保留年界、按发生日或付款日归年、非现金折抵、无记录与真实零，以及正负尺度。用长年份标签、大额和 IME 验证。[AnnualReviewScreen.kt](../../../app/src/main/java/com/cooper/lithic/feature/review/AnnualReviewScreen.kt#L21) |
+| 长期复盘 | 两组等宽 `FilterChip` 分别选类型及项目排名方式，订阅使用折算付费时长。每条记录先有身份、类别和状态，再以多个纵向块显示时长和成本。一条记录偏高，大字下两个长筛选有换行压力。 | 类型统一轻底轨，排序动作独立且按空间换行。记录整理为顺序、身份、首要指标及次要事实，保留无有效分母的未排名行、保留快照和分页。大字时让右侧金额／时长下移。[LongTermReviewScreen.kt](../../../app/src/main/java/com/cooper/lithic/feature/review/LongTermReviewScreen.kt#L36) |
+| 项目成本历史／订阅价格历史 | 两个路由经项目及订阅专用包装复用 `CostChartPage`，同框放选日、图表、解释与事件。大字、多单位或选日工具展开时要关注首屏拥挤。 | 与完整趋势共用图形区和状态节奏。项目保留真实金额／日均，订阅读数保留原价格／周期和付款事实。相同设计不合并数据口径。 保留查询、可访问图表与记录回链。[项目图表](../../../app/src/main/java/com/cooper/lithic/feature/project/ProjectCostChart.kt#L15) · [订阅图表](../../../app/src/main/java/com/cooper/lithic/feature/subscription/SubscriptionPriceChart.kt#L15) · [共用页面](../../../app/src/main/java/com/cooper/lithic/core/design/CostChartPage.kt#L43) |
+
+## 二、项目、订阅与搜索
+
+| 页面 | 当前结构与问题 | R0 对齐和验证重点 |
+| --- | --- | --- |
+| 长期项目列表 | 顶栏和独立新增按钮之后渲染 `EntryCard`，使用 64dp 封面和状态／日期／金额。列表长时每项单卡重复。 | 以连续档案行延续首页的封面、名称和金额节奏，统一行间分隔与动作强度。保留项目新增、有效状态、当前和历史边界、日均、继续加载以及带旧结果的失败提示。大字体下保留完整名称与 `MoneyMetric` 金额访问。 [ProjectListScreen.kt](../../../app/src/main/java/com/cooper/lithic/feature/project/ProjectListScreen.kt#L37) |
+| 订阅列表 | 同样走 `EntryCard`，同时有折算时长或到期相关文字、历史平均日成本，以及全宽分页按钮。列表说明在独立弹窗。 | 复用档案行，保留真实状态和日期。主指标保留历史平均日成本，不能因与项目共用行样式改口径。长服务名与长状态采用上下布局，继续保留说明与重试。[SubscriptionListScreen.kt](../../../app/src/main/java/com/cooper/lithic/feature/subscription/SubscriptionListScreen.kt#L40) |
+| 项目详情 | 身份／照片后是两张日均与累计投入卡、折叠财务明细、金额记录、折叠更多资料和固定「记一笔」。高倍字号已经按可用宽度与实际金额测量切换单列。照片、事件详情和操作 Sheet 另有入口。 | 按已冻结顺序，仅调整现有区域的间距、文字层级与分隔。保留卡片纵排、原记录顺序与最近三笔、「全部」、金额语义、原封面条件和既有操作守卫。检查长名、负值、无照片／失效以及固定底栏。[ProjectDetailScreen.kt](../../../app/src/main/java/com/cooper/lithic/feature/project/ProjectDetailScreen.kt#L181) · [金额布局](../../../app/src/main/java/com/cooper/lithic/feature/project/ProjectDetailScreen.kt#L343) |
+| 订阅详情 | 身份、主成本、当前／下一期、付款历史、更多资料及固定续费操作已存在。其中套餐卡的 1dp 描边、条目阴影和少量事实重复，视觉重量与项目详情不同。 | 保留已有结构、状态与付款日期、已覆盖期间、历史三笔／全部及可纠错条件。按操作优先级收敛分隔和按钮。分别验证 200% 字体下套餐、付款行、负载状态和管理 Sheet。[SubscriptionDetailScreen.kt](../../../app/src/main/java/com/cooper/lithic/feature/subscription/SubscriptionDetailScreen.kt#L94) · [套餐与管理](../../../app/src/main/java/com/cooper/lithic/feature/subscription/SubscriptionDetailScreen.kt#L220) |
+| 已结束项目 | 历史标题、截止日期与数量、历史项目卡片，继续显示结束日期、持有时长与成本。与当前列表共享卡片语法，历史事实字较多。 | 延续同一档案行，用已有「已结束」和明确日期区分。保留结束后实际结算和返回回看。大字时日期允许多行。[ProjectHistoryScreen.kt](../../../app/src/main/java/com/cooper/lithic/feature/project/ProjectHistoryScreen.kt#L35) |
+| 已停止订阅 | 复用项目式 `EntryCard` 展示「已停止」、折算时长、历史平均日成本和封面。 | 统一卡片表面及分页操作，保留已停止才进入该档案的事实，以及到期／暂停仍在当前列表的解释。[SubscriptionHistoryScreen.kt](../../../app/src/main/java/com/cooper/lithic/feature/subscription/SubscriptionHistoryScreen.kt#L35) |
+| 名称搜索 | 顶栏带动作、带键盘的输入区、结果各自 `Surface` 和状态胶囊，结果加载／旧结果、空输入、无匹配不同。 | 用档案行和清晰的项目／订阅辨识复用结果外观。保留同一查询约束、过期提示、历史来源与返回链。验证键盘前后滚动、长标签和查询不截断关键状态。[SearchScreen.kt](../../../app/src/main/java/com/cooper/lithic/feature/home/SearchScreen.kt#L38) |
+| 替换链纵向对比 | `ReplacementComparison` 用逐项区块列前任、当前、后任，并以弹窗选择另一项目、方向、确认或解链。角色、身份、日期说明和动作叠放，带封面目前在该入口显示暂不可用。 | 用顺序明确的档案行即能表达链路。保留原封面可用性及路径、非现金折抵、建链预览、关联事实与解链边界。长项目名和弹窗按钮需要大字验收。[ReplacementComparisonScreen.kt](../../../app/src/main/java/com/cooper/lithic/feature/project/ReplacementComparisonScreen.kt#L55) |
+
+## 三、表单与危险操作
+
+| 页面／面板 | 当前结构与问题 | R0 对齐和验证重点 |
+| --- | --- | --- |
+| 新增长期项目／编辑项目 | `ProjectEditorScreen` 单栏有独立返回和滚动标题。新增依次是名称、实际投入、拥有日期、类别、实际付款日期、说明与备注。编辑有以旧换新保护。保存栏实测独立于滚动并使用 IME padding，字段密度仍不一致。 | 延续填写顺序和实际金额／日期口径。主标签外置，摘要可展开，主操作独立占位，错误靠近字段并保留自动定位。需验证 320dp／200% 键盘开合、实际付款日期折叠和写入结果未知回读。[ProjectEditorScreen.kt](../../../app/src/main/java/com/cooper/lithic/feature/project/ProjectEditorScreen.kt#L87) |
+| 金额记录／项目纠错 | 「记一笔」底部 Sheet 选择投入／收回，再进 `MoneyEventEditor`。记录详情弹窗进入纠错或结算更正。日期、实际金额和说明都在单栏。 | 选择型 Sheet 与设置主题共用节奏。金额录入沿用原格式、键盘、0 元规则与确认。已入账／提交未确认恢复路径优先验证。[入口 Sheet](../../../app/src/main/java/com/cooper/lithic/feature/project/ProjectDetailScreen.kt#L274) · [表单](../../../app/src/main/java/com/cooper/lithic/feature/project/MoneyEventEditor.kt#L28) · [纠错](../../../app/src/main/java/com/cooper/lithic/feature/project/MoneyEventCorrectionScreen.kt#L16) |
+| 结束项目／更正结束 | 两条路由同用 `EndProjectDialog` 的表单壳，拥有日期边界、原事实核对、可选实际收回与固定动作。 | 用清晰字段分组和危险操作关系说明减轻连读负担。大字可多行，确认区独立可达。日期、实际收回、提交保护与回读原规则保留。[EndProjectDialog.kt](../../../app/src/main/java/com/cooper/lithic/feature/project/EndProjectDialog.kt#L26) |
+| 删除项目／以旧换新 | 删除为短确认 `AlertDialog`，不可取消条件由原状态决定。以旧换新是独立单栏长表单，实际补款、非现金折抵、结算和确认各有事实。 | 危险确认使用明确动词和影响，上方信息全量可读。以旧换新沿用可滚正文和实测底栏。保留原身份、金额边界、核对与阻塞条件。[DeleteProjectDialog.kt](../../../app/src/main/java/com/cooper/lithic/feature/project/DeleteProjectDialog.kt#L24) · [TradeInEditorScreen.kt](../../../app/src/main/java/com/cooper/lithic/feature/project/TradeInEditorScreen.kt#L36) |
+| 新增订阅／记录续费 | `SubscriptionEditorScreen` 与 `RenewalEditorScreen` 共享付款字段。服务名、分类、真实金额、周期、付费日期、覆盖日期和偏好有不同可编辑条件，现有字段、周期选项与日期按钮样式密度不一。 | 统一字段间距、标签与覆盖事实组，付款日期和覆盖边界分开。保留周期、首笔／续费原动作、表单验证及可读的待核对。用 200% 和键盘检查。[新增和付款字段](../../../app/src/main/java/com/cooper/lithic/feature/subscription/SubscriptionEditorScreen.kt#L52) · [续费](../../../app/src/main/java/com/cooper/lithic/feature/subscription/RenewalEditorScreen.kt#L26) |
+| 订阅状态、纠错、取消停止、付款更正／删除 | 五条路由交给 `SubscriptionOperationContent`。复用 `SubscriptionStateDialog` 的全屏表单。标题与内容随启用／暂停／恢复／停止／纠错切换，显示不能修改的情形、最后一笔保护及服务商扣费提醒。 | 用表单动作和可滚说明统一。确认区保留后果、禁用理由、取消／恢复原行为与实际付款事实。多选与长警告在大字号下允许纵排。 [路由](../../../app/src/main/java/com/cooper/lithic/app/LithicNavigation.kt#L736) · [SubscriptionStateDialog.kt](../../../app/src/main/java/com/cooper/lithic/feature/subscription/SubscriptionStateDialog.kt#L39) |
+| 分类选择／日期选择 | 项目和订阅分别以 `AlertDialog` 呈现选类。项目日期输入包含文本校验、打开原生 DatePicker 的按钮与手输后备方案。两路付款还引用该日期组件。 | 统一分类选中、错误与安全取消，保留默认类别。原生日历、手输、年范围、业务日及 UTC 映射均继承。测试大字下长类名、日历确认、键盘和返回顺序。[ProjectInputs.kt](../../../app/src/main/java/com/cooper/lithic/feature/project/ProjectInputs.kt#L57) · [项目选类](../../../app/src/main/java/com/cooper/lithic/feature/project/ProjectInputs.kt#L136) · [订阅选类](../../../app/src/main/java/com/cooper/lithic/feature/subscription/SubscriptionEditorScreen.kt#L201) |
+
+## 四、设置、通用弹层和异常
+
+| 页面／面板 | 当前结构与问题 | R0 对齐和验证重点 |
+| --- | --- | --- |
+| 设置首页 | 主题、记录管理／只读时区、提醒延期、备份与恢复、照片空间、说明与关于从上到下滚动。设置行本身用底色图标，部分只读值与操作形态接近。 | 保留分组及动作，统一为具有区分度的设置行。长时区、备份反馈与操作说明可换行。只读项无箭头且无点击。校验进行中、结果未知及恢复期间动作门控保留。[SettingsShell.kt](../../../app/src/main/java/com/cooper/lithic/feature/settings/SettingsShell.kt#L56) · [设置行](../../../app/src/main/java/com/cooper/lithic/core/design/C2Page.kt#L58) |
+| 外观与主题 | 主题从 `AppearanceThemePicker` 打开 Sheet，80dp 最小行高与 96×62dp 示意色板。标签、选中、保存、失败重试并存。 | 三主题统一选项行、辅助预览与选中反馈。在窄屏／大字时优先保完整名称和选中读屏。外观仅本机保存的含义保留。[AppearanceThemePicker.kt](../../../app/src/main/java/com/cooper/lithic/feature/appearance/AppearanceThemePicker.kt#L33) |
+| 类别管理 | 项目及订阅用两枚并排描边按钮，列表逐项卡片且部分卡内又放并排的重命名／合并。新建、改名、合并和预览共用编辑对话框。 | 用标准轻底分段及扁平列表行。普通操作与合并确认严格区分，保留默认「其他」限制、同类型合并、受影响计数和提交未知回读。检查 200% 字体、IME、确认触达。[CategoryManagementScreen.kt](../../../app/src/main/java/com/cooper/lithic/feature/category/CategoryManagementScreen.kt#L39) |
+| 导出、检查备份及恢复预览 | 三项操作都在设置主页面，系统文件选择后返回原状态。恢复预览为内嵌 `RestorePreviewScreen`，要读日期、时区、数量对照和完整覆盖后果。较窄或大字时已有纵排。[内嵌预览](../../../app/src/main/java/com/cooper/lithic/feature/settings/RestorePreviewScreen.kt#L29) | 保留文件系统原生交互及未知结果，压实普通行，恢复隔离显示旧／新数量和明确确认。文件未加密、检查与恢复的区分、取消校验、全覆盖不合并、照片和记录时区后果均可读。[SettingsShell.kt](../../../app/src/main/java/com/cooper/lithic/feature/settings/SettingsShell.kt#L77) · [检查反馈](../../../app/src/main/java/com/cooper/lithic/feature/settings/DataConfidenceSections.kt#L23) |
+| 照片空间／封面弹层 | 照片空间为设置内嵌统计，多个图标化只读行和三段解释占长。替换、取消、查看和读取失败使用既有照片对话框，某些能力受设备或账本状态限制。 | 只读事实适合对齐清单并归并说明层次。保留字节是按登记长度估算、历史引用／备份关系和不可清理提示。弹层保留原选图、确认与失败字义，验证大字可滚。[空间统计](../../../app/src/main/java/com/cooper/lithic/feature/settings/DataConfidenceSections.kt#L44) · [照片操作](../../../app/src/main/java/com/cooper/lithic/feature/media/PhotoLiteCoverPanel.kt#L70) · [失败及全图](../../../app/src/main/java/com/cooper/lithic/feature/media/CoverPreviews.kt#L169) |
+| 成本说明／关于／提醒延期 | 说明和关于复用长文页，版本等事实需要清楚读取。`NotificationSettings` 路由显示延期页。两个通知来源兼容路由当前也受 `AUTOMATIC_NOTIFICATIONS = false` 限制。 | 保留说明章节、已安装版本事实、延期内容和安全回退，使用统一标题与正文，不将检查到的兼容实现列成可用功能。[ProductInformationScreen.kt](../../../app/src/main/java/com/cooper/lithic/feature/settings/ProductInformationScreen.kt#L26) · [提醒路由](../../../app/src/main/java/com/cooper/lithic/app/LithicNavigation.kt#L547) · [能力开关](../../../app/src/main/java/com/cooper/lithic/platform/notification/ReminderCapability.kt#L5) |
+| 账本启动、离开守卫、信息弹层和完整金额 | `StorageGate` 将初始化／读取失败隔开，Nav3 有放弃修改和请先核对保存结果两类确认。共用说明、完整金额与各详情事实对话框由多套实现呈现，易在大字下出现按钮挤压。 | 说明类保留可滚正文和原信息入口，危险／不可逆操作用短确认，长动作可纵排。继承账本失败、原事务与返回保护、完整金额及日期访问。 [账本入口](../../../app/src/main/java/com/cooper/lithic/app/LithicApp.kt#L35) · [返回守卫](../../../app/src/main/java/com/cooper/lithic/app/LithicNavigation.kt#L752) · [说明](../../../app/src/main/java/com/cooper/lithic/core/design/C5Information.kt#L29) · [金额](../../../app/src/main/java/com/cooper/lithic/core/design/MoneyMetric.kt#L105) |
+
+## 五、共同收口项
+
+- **边距与密度。** `LithicSpacing.page` 在普通宽度取 16dp、较宽由现有策略切换。项目编辑单独用 `medium`，资料页、表单壳和设置本身还带不同纵向间隔。后续以冻结基线统一非首页的标题、段间与行内节奏。记录、事件和设置先按一组表面组织，以一道细分隔替代重复卡片。状态需要提示时再使用独立色面。[现有间距](../../../app/src/main/java/com/cooper/lithic/core/design/LithicTheme.kt#L19) · [共用表单壳](../../../app/src/main/java/com/cooper/lithic/core/design/C2Page.kt#L77)
+- **大字与语义。** 现有许多操作已有 48dp 最小高度、形态滚动与 `MoneyMetric` 兜底。组合风险主要出在等宽筛选、时间／金额／入口同一行、日期选择器和 IME 下的确认区。验收按 320／360／400dp、100%／200%、三主题，涵盖名称、金额、历史与遗漏状态，并逐项以原生结果核对。
+- **反馈。** B2-R1 已将默认外层按压从绘制路径中移开。非首页分段若采用同样的内胶囊外观，继承可点击语义和内部裁切模式，仍用页面原有回调与选择状态。异步反馈复用现有状态与词义，确认空、读取中、失败、旧结果、保存未确认和保护态分别可读。[参考修复](../../evidence/LITHIC-UI-V4-B2-SEGMENT-PRESS-REPAIR-01.md) · [共用反馈](../../../app/src/main/java/com/cooper/lithic/core/design/UiFeedbackText.kt#L17)
