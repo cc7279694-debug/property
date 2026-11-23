@@ -18,6 +18,7 @@ import com.cooper.lithic.domain.subscription.*
 import com.cooper.lithic.feature.review.ReportAnalysisUiState
 import java.time.LocalDate
 import org.junit.Assert.assertEquals
+import org.junit.Assert.assertTrue
 import org.junit.Rule
 import org.junit.Test
 
@@ -82,9 +83,35 @@ class SingleCategoryPresentationSemanticsTest {
         compose.runOnIdle { ui.value = ready(populated = false) }
         scroll("category-analysis-name").assertTextEquals(pc.name)
         scroll("category-analysis-no-facts").assertTextEquals("未录入相关资金记录。")
+        compose.onNodeWithTag("category-analysis-outlay").assertDoesNotExist()
         compose.onNodeWithTag("category-analysis-empty").assertDoesNotExist()
         compose.onNodeWithTag("category-analysis-screen").performScrollToNode(hasText("未录入相关记录。"))
         compose.onNodeWithText("未录入相关记录。").assertExists()
+    }
+
+    @Test fun many_categories_are_bounded_and_a_long_name_selects_its_original_identity() {
+        val ui = mutableStateOf(ready())
+        val last = OverviewCategory("scroll-39", "长期项目归档分类名称".repeat(6), OverviewKind.PROJECT)
+        val reports = (0..38).map { index ->
+            CategoryReport(OverviewCategory("scroll-$index", "合成类别 $index", OverviewKind.PROJECT),
+                java.math.BigDecimal.ZERO, ReportAmounts(), emptyList(), emptyList())
+        } + CategoryReport(last, java.math.BigDecimal.ZERO, ReportAmounts(), emptyList(), emptyList())
+        ui.value = ui.value.copy(categories = reports, selectedCategoryId = reports.first().category.id)
+        var selected: Pair<OverviewKind, String?>? = null
+        show({ ui.value }, select = { kind, id ->
+            selected = kind to id
+            ui.value = ui.value.copy(selectedCategoryId = id)
+        })
+        scroll("category-analysis-name").assertHeightIsAtLeast(48.dp).performClick()
+        val list = compose.onNodeWithTag("category-analysis-picker-list")
+        val limitPx = with(compose.density) { 320.dp.toPx() }
+        assertTrue(list.fetchSemanticsNode().size.height <= limitPx + 1)
+        compose.onNodeWithTag("category-select-scroll-0").assertIsSelected().assertHeightIsAtLeast(48.dp)
+        list.performScrollToNode(hasTestTag("category-select-${last.id}"))
+        compose.onNodeWithTag("category-select-${last.id}")
+            .assertIsNotSelected().assertTextContains(last.name).performClick()
+        scroll("category-analysis-name").assertTextEquals(last.name)
+        compose.runOnIdle { assertEquals(OverviewKind.PROJECT to last.id, selected) }
     }
 
     private fun show(value: () -> ReportAnalysisUiState, select: (OverviewKind, String?) -> Unit = { _, _ -> },

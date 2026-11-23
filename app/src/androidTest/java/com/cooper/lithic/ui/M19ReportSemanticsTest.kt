@@ -1,9 +1,11 @@
 package com.cooper.lithic.ui
 
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.requiredSize
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.width
 import androidx.compose.runtime.CompositionLocalProvider
+import androidx.compose.runtime.mutableStateOf
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.test.*
@@ -87,6 +89,40 @@ class M19ReportSemanticsTest {
         scrollAnnual("annual-year-apply"); compose.onNodeWithTag("annual-year-apply").assertIsDisplayed().assertHeightIsAtLeast(48.dp)
         scrollAnnual("annual-review-back"); compose.onNodeWithTag("annual-review-back").assertIsDisplayed().assertHeightIsAtLeast(48.dp).performClick()
         compose.runOnIdle { assertEquals(1, backs) }
+    }
+
+    @Test fun narrow_large_type_retains_signed_and_zero_year_amounts() {
+        val signed = ReportAmounts(100L, 155L, 0L, 2, 1)
+        val captured = mutableStateOf(state().copy(annual = AnnualReport(2026, signed, emptyList(), emptyList())))
+        compose.setContent {
+            val density = LocalDensity.current.density
+            CompositionLocalProvider(LocalDensity provides Density(density, 2f)) {
+                LithicTheme { Box(Modifier.requiredSize(320.dp, 650.dp)) {
+                    AnnualReviewScreen(captured.value, { year ->
+                        captured.value = captured.value.copy(selectedYear = year,
+                            annual = captured.value.annual?.copy(year = year))
+                    }, {}, { _, _ -> }, {})
+                } }
+            }
+        }
+        scrollAnnual("annual-net")
+        compose.onNodeWithTag("annual-net").assertTextContains("−¥0.55")
+        scrollAnnual("annual-paid")
+        compose.onNodeWithTag("annual-paid").assertTextContains("¥0.00")
+        compose.onNodeWithTag("annual-empty-year").assertDoesNotExist()
+        scrollAnnual("annual-year-apply")
+        compose.onNodeWithTag("annual-year-apply").assertHeightIsAtLeast(48.dp)
+        scrollAnnual("annual-year-input")
+        compose.onNodeWithTag("annual-year-input").performTextReplacement("2027")
+        scrollAnnual("annual-year-apply")
+        compose.onNodeWithTag("annual-year-apply").performClick()
+        scrollAnnual("annual-year-error")
+        compose.onNodeWithTag("annual-year-error").assertExists()
+        scrollAnnual("annual-year-previous")
+        compose.onNodeWithTag("annual-year-previous").performClick()
+        scrollAnnual("annual-selected-year")
+        compose.onNodeWithTag("annual-selected-year").assertTextEquals("2025 年")
+        compose.onNodeWithTag("annual-year-error").assertDoesNotExist()
     }
 
     private fun state(): ReportAnalysisUiState {
