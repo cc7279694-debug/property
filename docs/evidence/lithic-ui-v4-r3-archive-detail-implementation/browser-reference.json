@@ -1,0 +1,135 @@
+{
+  "scope": "BROWSER_DESIGN_ONLY",
+  "android": "NOT_RUN",
+  "browser": "Chrome 157.0.8103.79",
+  "widths": [
+    320,
+    360,
+    400
+  ],
+  "fontScales": [
+    1,
+    2
+  ],
+  "checked": 108,
+  "browserScriptErrors": 0,
+  "screens": [
+    "current projects",
+    "current subscriptions",
+    "ended projects",
+    "stopped subscriptions",
+    "project detail",
+    "subscription detail"
+  ],
+  "checks": [
+    "image decode",
+    "scroll boundary",
+    "horizontal bounds",
+    "complete 360 px/100% capture",
+    "fixed action separation",
+    "archive 64×48 CSS-pixel cover slots",
+    "archive row dividers",
+    "project 4:3 Fit cover",
+    "project amount order and latest three events",
+    "subscription current/next plans and latest three payments",
+    "inline detail toolbar titles with back and overflow controls",
+    "detail disclosures with 14 px radius and 1 px outline",
+    "detail footer dividers and Plus actions",
+    "20 px detail history and disclosure spacing"
+  ],
+  "fixture": {
+    "observedOn": "2026-11-16",
+    "note": "Synthetic independent ledger for R3. Currency values rounded to two decimals.",
+    "currentProject": {
+      "id": "demo-camera",
+      "startedOn": "2026-07-20",
+      "heldDays": 120,
+      "grossOutlayYuan": 4650,
+      "recoveriesYuan": 450,
+      "dailyCostYuan": 35
+    },
+    "currentSubscription": {
+      "id": "demo-reading",
+      "actualPaymentsYuan": [
+        30,
+        30,
+        30,
+        30
+      ],
+      "standardDays": 120,
+      "historicalDailyCostYuan": 1,
+      "nextPaidOn": "2026-11-11",
+      "nextEffectiveFrom": "2026-11-18"
+    },
+    "endedProjects": [
+      {
+        "heldDays": 30,
+        "netOutlayYuan": 60
+      },
+      {
+        "heldDays": 60,
+        "netOutlayYuan": 240
+      }
+    ],
+    "stoppedSubscriptions": [
+      {
+        "standardDays": 90,
+        "amountYuan": 108
+      },
+      {
+        "standardDays": 30,
+        "amountYuan": 27
+      }
+    ]
+  },
+  "sources": [
+    "docs/design/lithic-ui-v4-r0/preview.js",
+    "docs/design/lithic-ui-v4-r0/preview.css",
+    "docs/design/lithic-ui-v4-r0/project-themes.png",
+    "docs/design/lithic-ui-v4-r0/list-editor.png",
+    "docs/design/lithic-ui-v3-03-details/boards/renders/subscription-themes.png"
+  ],
+  "mediaAttribution": [
+    {
+      "asset": "docs/design/lithic-ui-v3-03-details/boards/assets/synthetic-camera.png",
+      "credit": "Existing LITHIC synthetic reference"
+    },
+    {
+      "asset": "docs/design/lithic-ui-v3-02/boards/assets/reader.jpg",
+      "credit": "Hexafluoride, CC BY-SA 4.0, 4:3 center crop in archive slot",
+      "source": "https://commons.wikimedia.org/wiki/File:Kindle_4th_Generation.jpg"
+    }
+  ],
+  "boards": [
+    {
+      "name": "archive-three-themes-design.png",
+      "pixels": [
+        1767,
+        3933
+      ],
+      "sha256": "5a50dcfc8cc27b31f24937de1bef19ce878dd1361e8be26582e9d77b0c44395c"
+    },
+    {
+      "name": "project-three-themes-design.png",
+      "pixels": [
+        1767,
+        1754
+      ],
+      "sha256": "015b6523e4454cee92e7f08de0d9cd21ffd3be2ae944640382e4284adb5b6c2f"
+    },
+    {
+      "name": "subscription-three-themes-design.png",
+      "pixels": [
+        1767,
+        1571
+      ],
+      "sha256": "13a049481f824c6b311e931086db8a6b993fdd53a5abd7b9251a5730817b9133"
+    }
+  ],
+  "detailRefresh": {
+    "checked": 36,
+    "browser": "Chrome 157.0.8103.79",
+    "browserScriptErrors": 0,
+    "dimensions": "CSS pixels"
+  }
+}
