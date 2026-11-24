@@ -1,5 +1,6 @@
 package com.cooper.lithic.feature.media
 
+import android.graphics.Bitmap
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
@@ -8,8 +9,14 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.test.assertCountEquals
+import androidx.compose.ui.test.assertHeightIsEqualTo
+import androidx.compose.ui.test.assertIsDisplayed
+import androidx.compose.ui.test.assertWidthIsEqualTo
+import androidx.compose.ui.test.hasClickAction
+import androidx.compose.ui.test.hasTestTag
 import androidx.compose.ui.test.junit4.createComposeRule
 import androidx.compose.ui.test.onAllNodesWithContentDescription
+import androidx.compose.ui.test.onAllNodesWithTag
 import androidx.compose.ui.unit.Density
 import androidx.compose.ui.unit.dp
 import androidx.test.ext.junit.runners.AndroidJUnit4
@@ -21,6 +28,7 @@ import com.cooper.lithic.feature.home.HomeShell
 import com.cooper.lithic.feature.project.*
 import com.cooper.lithic.feature.subscription.*
 import com.cooper.lithic.ui.C2VisualFixtures
+import java.io.ByteArrayOutputStream
 import java.io.IOException
 import java.util.Collections
 import org.junit.Assert.assertEquals
@@ -33,6 +41,7 @@ import org.junit.runner.RunWith
 class C6CoverPageWiringTest {
     @get:Rule val compose = createComposeRule()
     private enum class Page { HOME, PROJECT_LIST, PROJECT_HISTORY, SUBSCRIPTION_LIST, SUBSCRIPTION_HISTORY, PROJECT_DETAIL, SUBSCRIPTION_DETAIL }
+    private val archivePages = setOf(Page.PROJECT_LIST, Page.PROJECT_HISTORY, Page.SUBSCRIPTION_LIST, Page.SUBSCRIPTION_HISTORY)
 
     @Test fun eight_cover_slots_keep_exact_type_record_and_asset_identity_and_failure_semantics() {
         val facts = C2VisualFixtures(true)
@@ -58,6 +67,37 @@ class C6CoverPageWiringTest {
             compose.waitForIdle()
             assertEquals(expected.toSet(), synchronized(reader.requests) { reader.requests.toSet() })
             compose.onAllNodesWithContentDescription("封面暂不可用", substring = true, useUnmergedTree = true).assertCountEquals(expected.size)
+            if (target in archivePages) {
+                compose.onNode(hasTestTag("record-cover-unavailable") and hasClickAction(), useUnmergedTree = true)
+                    .assertIsDisplayed().assertWidthIsEqualTo(64.dp).assertHeightIsEqualTo(48.dp)
+            }
+        }
+    }
+
+    @Test fun verified_archive_cover_uses_the_same_64_by_48_slot_without_a_separate_action() {
+        val facts = C2VisualFixtures(true)
+        val project = facts.projects.items.single().let { it.copy(project = it.project.copy(coverAssetId = ASSET)) }
+        val subscription = facts.subscriptions.items.single().let { it.copy(subscription = it.subscription.copy(coverAssetId = ASSET)) }
+        val bitmap = Bitmap.createBitmap(80, 48, Bitmap.Config.ARGB_8888)
+        val png = ByteArrayOutputStream().use { output ->
+            try {
+                check(bitmap.compress(Bitmap.CompressFormat.PNG, 100, output))
+                output.toByteArray()
+            } finally {
+                bitmap.recycle()
+            }
+        }
+        val reader = ObservedReader(VerifiedCoverImage(ASSET, "image/png", 80, 48, png))
+        var page by mutableStateOf(Page.PROJECT_LIST)
+        compose.setContent { Host(reader) { key(page) { PageContent(page, facts, project, subscription) } } }
+        archivePages.forEach { target ->
+            compose.runOnIdle { page = target }
+            compose.waitUntil(5_000) {
+                compose.onAllNodesWithTag("record-cover-image", useUnmergedTree = true).fetchSemanticsNodes().size == 1
+            }
+            compose.onNode(hasTestTag("record-cover-image") and hasClickAction().not(), useUnmergedTree = true)
+                .assertIsDisplayed().assertWidthIsEqualTo(64.dp).assertHeightIsEqualTo(48.dp)
+            compose.onAllNodesWithTag("record-cover-unavailable", useUnmergedTree = true).assertCountEquals(0)
         }
     }
 
@@ -106,13 +146,14 @@ class C6CoverPageWiringTest {
         }
     }
 
-    private class ObservedReader : CoverReader {
+    private class ObservedReader(private val image: VerifiedCoverImage? = null) : CoverReader {
         override val generationId = "9b000000-0000-0000-0000-000000000001"
         override val ownerKey: Any = Any()
         val requests = Collections.synchronizedList(mutableListOf<CoverReference>())
         override fun isCurrent() = true
         override suspend fun read(reference: CoverReference): CoverReadResult {
             requests.add(reference)
+            if (image != null) return CoverReadResult.Ready(image)
             throw IOException("Synthetic read failure; no media file exists or is opened")
         }
     }

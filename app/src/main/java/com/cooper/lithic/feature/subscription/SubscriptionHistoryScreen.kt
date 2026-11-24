@@ -1,44 +1,44 @@
 package com.cooper.lithic.feature.subscription
 
-import androidx.compose.foundation.layout.size
 import com.cooper.lithic.data.media.CoverOwnerType
 import com.cooper.lithic.data.media.CoverReference
 import com.cooper.lithic.feature.media.RecordCover
 import com.cooper.lithic.core.design.C2RecordIdentity
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.widthIn
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
-import androidx.compose.material3.Button
 import com.cooper.lithic.core.design.LithicOutlinedButton as OutlinedButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import com.cooper.lithic.core.design.LithicTextButton as TextButton
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.testTag
-import androidx.compose.ui.semantics.heading
-import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.unit.dp
 import com.cooper.lithic.core.design.C5InformationButton
 import com.cooper.lithic.core.design.C2PageHeader
 import com.cooper.lithic.core.design.C2Glyph
-import com.cooper.lithic.core.design.C2Icon
-import com.cooper.lithic.core.design.EntryCard
+import com.cooper.lithic.feature.archive.ArchiveContentWidth
+import com.cooper.lithic.feature.archive.ArchiveEntryRow
+import com.cooper.lithic.feature.archive.ArchivePageInset
 import com.cooper.lithic.core.design.LithicSpacing
 
 @Composable
 internal fun SubscriptionHistoryScreen(state: SubscriptionListUiState, onBack: () -> Unit,
     onOpenSubscription: (String) -> Unit, onLoadMore: () -> Unit, onRetry: () -> Unit, modifier: Modifier = Modifier) {
-    Column(modifier.fillMaxSize().testTag("subscription-history-screen")) {
-    LazyColumn(Modifier.fillMaxSize().testTag("subscription-history-content"),
+    Box(modifier.fillMaxSize().testTag("subscription-history-screen"), contentAlignment = Alignment.TopCenter) {
+    LazyColumn(Modifier.widthIn(max = ArchiveContentWidth).fillMaxSize().testTag("subscription-history-content"),
         verticalArrangement = Arrangement.spacedBy(LithicSpacing.xSmall)) {
         item {
-            Column(Modifier.fillMaxWidth().padding(horizontal = LithicSpacing.page), verticalArrangement = Arrangement.spacedBy(8.dp)) {
+            Column(Modifier.fillMaxWidth().padding(horizontal = ArchivePageInset), verticalArrangement = Arrangement.spacedBy(8.dp)) {
                 C2PageHeader("已停止订阅", onBack, "subscription-history-back", backLabel = "返回回看",
                     actions = { C5InformationButton("已停止订阅说明") { Text("保留真实付款和状态历史。暂停或到期服务在当前列表管理。") } })
                 state.totalCount?.let { Text("已停止 $it 条订阅", Modifier.testTag("subscription-history-count")) }
@@ -76,19 +76,19 @@ internal fun SubscriptionHistoryScreen(state: SubscriptionListUiState, onBack: (
             Text("暂无已停止订阅", Modifier.padding(LithicSpacing.medium).testTag("subscription-history-empty"))
         }
         items(state.items, key = { it.subscription.id }) { detail ->
-            EntryCard(detail.subscription.name, "已停止", "折算付费时长：${detail.cost.standardPurchasedDays}天",
-                detail.cost.historicalAverage, Modifier.padding(horizontal = LithicSpacing.page)
-                    .testTag("subscription-history-row-${detail.subscription.id}"), onClick = { onOpenSubscription(detail.subscription.id) }, category = detail.category.name, kind = C2Glyph.Subscription,
+            ArchiveEntryRow(detail.subscription.name, "已停止", "折算付费时长：${detail.cost.standardPurchasedDays}天",
+                detail.cost.historicalAverage, Modifier.padding(horizontal = ArchivePageInset)
+                    .testTag("subscription-history-row-${detail.subscription.id}"), onClick = { onOpenSubscription(detail.subscription.id) }, category = detail.category.name,
                     cover = { RecordCover(CoverReference(CoverOwnerType.SUBSCRIPTION, detail.subscription.id, detail.subscription.coverAssetId),
-                        Modifier.size(64.dp)) { C2RecordIdentity(detail.subscription.name, detail.category.name, C2Glyph.Subscription) } },
-                    hasCoverReference = detail.subscription.coverAssetId != null, metricLabel = "历史平均日成本")
+                        Modifier.fillMaxSize()) { C2RecordIdentity(detail.subscription.name, detail.category.name, C2Glyph.Subscription) } },
+                    metricLabel = "历史平均日成本")
         }
         if (!state.loading && state.error == null && state.totalCount != null && state.items.isNotEmpty()) item {
             Text(when {
                 state.loadingMore -> "正在读取下一页；已显示 ${state.items.size} / ${state.totalCount} 条"
                 state.hasMore -> "已显示 ${state.items.size} / ${state.totalCount} 条，可继续加载"
                 else -> "已显示 ${state.items.size} 条，已到列表末尾"
-            }, Modifier.padding(horizontal = LithicSpacing.page).testTag("subscription-history-page-status"),
+            }, Modifier.padding(horizontal = ArchivePageInset).testTag("subscription-history-page-status"),
                 style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.onSurfaceVariant)
         }
         if (state.hasMore) item {

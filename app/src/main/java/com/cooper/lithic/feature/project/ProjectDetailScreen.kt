@@ -49,7 +49,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.clipToBounds
 import androidx.compose.ui.draw.drawBehind
-import androidx.compose.ui.draw.rotate
 import androidx.compose.ui.geometry.CornerRadius
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.geometry.Size
@@ -77,6 +76,9 @@ import com.cooper.lithic.data.local.MoneyBasis
 import com.cooper.lithic.data.local.ProjectMoneyEventEntity
 import com.cooper.lithic.data.local.ProjectMoneyEventRole
 import com.cooper.lithic.data.repository.ProjectDetail
+import com.cooper.lithic.feature.archive.ArchiveDetailDisclosure
+import com.cooper.lithic.feature.archive.ArchiveDetailFrame
+import com.cooper.lithic.feature.archive.ArchivePageInset
 import java.math.BigDecimal
 import com.cooper.lithic.core.design.LithicButton as Button
 
@@ -118,12 +120,14 @@ internal fun ProjectDetailScreen(
     var showMoreDetails by remember(projectId, presentationIdentity) { mutableStateOf(false) }
     var selectedMoneyId by remember(projectId, presentationIdentity) { mutableStateOf<String?>(null) }
     val colors = MaterialTheme.colorScheme
-    Column(modifier.fillMaxSize().background(colors.background).testTag("project-detail-screen")) {
-        Row(Modifier.fillMaxWidth().padding(horizontal = 8.dp), verticalAlignment = Alignment.CenterVertically) {
+    ArchiveDetailFrame(modifier.testTag("project-detail-screen")) {
+        Row(Modifier.fillMaxWidth().padding(horizontal = 8.dp).heightIn(min = 56.dp),
+            verticalAlignment = Alignment.CenterVertically) {
             IconButton(onBack, Modifier.size(48.dp).testTag("project-detail-back").semantics { contentDescription = backLabel }) {
                 C2Icon(C2Glyph.Back)
             }
-            Spacer(Modifier.weight(1f))
+            Text("项目详情", Modifier.weight(1f).semantics { heading() },
+                style = MaterialTheme.typography.titleLarge, fontWeight = FontWeight.SemiBold)
             if (detail != null) Box {
                 IconButton({ menuOpen = true }, Modifier.size(48.dp).testTag("project-detail-more")) {
                     C2Icon(C2Glyph.More, description = "更多项目操作")
@@ -166,7 +170,7 @@ internal fun ProjectDetailScreen(
             }
         }
         LazyColumn(Modifier.weight(1f).fillMaxWidth().testTag("project-detail-content"),
-            contentPadding = PaddingValues(start = LithicSpacing.page, end = LithicSpacing.page, top = 8.dp, bottom = 24.dp)) {
+            contentPadding = PaddingValues(start = ArchivePageInset, end = ArchivePageInset, top = 8.dp, bottom = 24.dp)) {
             if (state.loading) item { Text("正在读取项目", Modifier.padding(bottom = 12.dp), style = MaterialTheme.typography.bodyLarge) }
             state.error?.let { message -> item {
                 Column(Modifier.padding(bottom = 12.dp), verticalArrangement = Arrangement.spacedBy(8.dp)) {
@@ -180,7 +184,7 @@ internal fun ProjectDetailScreen(
             if (state.missing) item { Text("项目不存在，返回列表查看当前记录。", style = MaterialTheme.typography.bodyLarge) }
             if (detail != null) {
                 item {
-                    Column(Modifier.padding(bottom = 14.dp), verticalArrangement = Arrangement.spacedBy(4.dp)) {
+                    Column(Modifier.padding(bottom = 20.dp), verticalArrangement = Arrangement.spacedBy(4.dp)) {
                         ProjectIdentity(detail, coverContent, expandPhotoCover)
                         if (detail.project.coverAssetId == null && onAddPhoto != null) {
                             TextButton(onAddPhoto, Modifier.heightIn(min = 48.dp).testTag("project-add-photo"),
@@ -214,12 +218,11 @@ internal fun ProjectDetailScreen(
                 // The repository supplies ascending occurrence date and ID. Keep that order at either disclosure size.
                 val visibleEvents = if (showAllMoney) detail.events else detail.events.takeLast(INITIAL_MONEY_RECORD_COUNT)
                 item {
-                    Row(Modifier.fillMaxWidth().padding(top = 16.dp, bottom = 6.dp),
+                    Row(Modifier.fillMaxWidth().padding(top = 20.dp, bottom = 6.dp).heightIn(min = 48.dp),
                         verticalAlignment = Alignment.CenterVertically) {
                         FlowRow(Modifier.weight(1f), horizontalArrangement = Arrangement.spacedBy(LithicSpacing.xSmall),
                             itemVerticalAlignment = Alignment.CenterVertically) {
-                            Text("金额记录", Modifier.semantics { heading() }, style = MaterialTheme.typography.titleSmall,
-                                fontWeight = FontWeight.Normal)
+                            Text("金额记录", Modifier.semantics { heading() }, style = MaterialTheme.typography.titleMedium)
                             Text("${detail.events.size} 笔", Modifier.testTag("project-money-count"),
                                 style = MaterialTheme.typography.bodySmall, color = colors.onSurfaceVariant)
                         }
@@ -236,13 +239,18 @@ internal fun ProjectDetailScreen(
                         onOpen = { selectedMoneyId = event.id })
                 }
                 item {
-                    Column(Modifier.padding(top = 20.dp).testTag("project-secondary-management"),
-                        verticalArrangement = Arrangement.spacedBy(8.dp)) {
-                        HorizontalDivider()
-                        ProjectDetailDisclosure("更多资料", showMoreDetails, "project-more-details-expand") {
-                            showMoreDetails = !showMoreDetails
+                    Surface(Modifier.fillMaxWidth().padding(top = 20.dp).testTag("project-secondary-management"),
+                        shape = RoundedCornerShape(14.dp), color = colors.surface,
+                        border = BorderStroke(1.dp, colors.outlineVariant)) {
+                        Column(Modifier.padding(horizontal = 12.dp)) {
+                            ArchiveDetailDisclosure("更多资料", showMoreDetails, "project-more-details-expand") {
+                                showMoreDetails = !showMoreDetails
+                            }
+                            if (showMoreDetails) {
+                                HorizontalDivider(color = colors.outlineVariant)
+                                Box(Modifier.padding(vertical = 12.dp)) { ProjectAdditionalDetails(detail, onCostHistory) }
+                            }
                         }
-                        if (showMoreDetails) ProjectAdditionalDetails(detail, onCostHistory)
                     }
                 }
             }
@@ -250,7 +258,7 @@ internal fun ProjectDetailScreen(
         if (detail != null) Surface(color = colors.background) {
             Column {
                 HorizontalDivider(color = colors.outlineVariant)
-                Button({ moneySheetOpen = true }, Modifier.fillMaxWidth().padding(horizontal = LithicSpacing.page, vertical = 9.dp)
+                Button({ moneySheetOpen = true }, Modifier.fillMaxWidth().padding(horizontal = ArchivePageInset, vertical = 9.dp)
                     .testTag("project-record-money"), shape = CircleShape) {
                     C2Icon(C2Glyph.Add)
                     Spacer(Modifier.width(8.dp))
@@ -343,7 +351,7 @@ private fun ProjectIdentity(detail: ProjectDetail, coverContent: (@Composable ()
 private fun ProjectCostSummary(detail: ProjectDetail) {
     val outlay = BigDecimal.valueOf(detail.cost.grossOutlayCents, 2)
     val rateLabel = projectDetailRateLabel(detail.project.endedOn != null, detail.cost.contributesToCurrentTotal)
-    val spacing = LithicSpacing.xSmall
+    val spacing = LithicSpacing.small
     BoxWithConstraints(Modifier.fillMaxWidth().testTag("project-core-metrics")) {
         val metricWidth = ((maxWidth - spacing) / 2 - LithicSpacing.small * 2).coerceAtLeast(0.dp)
         val sideBySide = metricWidth >= 88.dp && LocalDensity.current.fontScale <= 1.3f &&
@@ -390,18 +398,6 @@ private fun ProjectCostCard(
 }
 
 @Composable
-private fun ProjectDetailDisclosure(label: String, expanded: Boolean, tag: String, onToggle: () -> Unit) {
-    TextButton(onToggle, Modifier.fillMaxWidth().testTag(tag).semantics {
-        stateDescription = if (expanded) "已展开" else "已收起"
-    }) {
-        Text(label, Modifier.weight(1f).semantics { heading() },
-            style = MaterialTheme.typography.titleSmall, fontWeight = FontWeight.Normal,
-            color = MaterialTheme.colorScheme.onSurface)
-        C2Icon(C2Glyph.Chevron, Modifier.rotate(if (expanded) -90f else 90f))
-    }
-}
-
-@Composable
 private fun ProjectFinancialDetails(detail: ProjectDetail, expanded: Boolean, onToggle: () -> Unit) {
     val colors = MaterialTheme.colorScheme
     val includesCredit = detail.events.any { it.basis == MoneyBasis.TRADE_IN_CREDIT }
@@ -413,7 +409,7 @@ private fun ProjectFinancialDetails(detail: ProjectDetail, expanded: Boolean, on
         shape = RoundedCornerShape(14.dp), border = BorderStroke(1.dp, colors.outlineVariant),
         color = colors.surface) {
         Column(Modifier.padding(horizontal = 12.dp)) {
-            ProjectDetailDisclosure("财务明细", expanded, "project-financial-expand", onToggle)
+            ArchiveDetailDisclosure("财务明细", expanded, "project-financial-expand", onToggle)
             if (expanded) {
                 Column(Modifier.fillMaxWidth().padding(bottom = 12.dp).testTag("project-financial-details"),
                     verticalArrangement = Arrangement.spacedBy(8.dp)) {

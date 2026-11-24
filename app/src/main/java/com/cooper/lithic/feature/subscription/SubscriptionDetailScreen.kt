@@ -20,7 +20,6 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clipToBounds
-import androidx.compose.ui.draw.rotate
 import androidx.compose.ui.geometry.CornerRadius
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.geometry.Size
@@ -40,6 +39,9 @@ import com.cooper.lithic.data.local.SubscriptionRenewalEntity
 import com.cooper.lithic.domain.subscription.BillingCycle
 import com.cooper.lithic.domain.subscription.SubscriptionDisplayStatus
 import com.cooper.lithic.domain.subscription.SubscriptionOperationState
+import com.cooper.lithic.feature.archive.ArchiveDetailDisclosure
+import com.cooper.lithic.feature.archive.ArchiveDetailFrame
+import com.cooper.lithic.feature.archive.ArchivePageInset
 import java.math.BigDecimal
 import java.time.LocalDate
 
@@ -80,19 +82,21 @@ internal fun SubscriptionDetailScreen(
         detail.currentRenewal else nextPayment?.takeIf { it.id == planOpen }
     val historyEnabled = !state.loading && state.error == null && state.history.error == null
     val colors = MaterialTheme.colorScheme
-    Column(modifier.fillMaxSize().testTag("subscription-detail-screen")) {
-        Row(Modifier.fillMaxWidth().padding(horizontal = 8.dp), verticalAlignment = Alignment.CenterVertically) {
+    ArchiveDetailFrame(modifier.testTag("subscription-detail-screen")) {
+        Row(Modifier.fillMaxWidth().padding(horizontal = 8.dp).heightIn(min = 56.dp),
+            verticalAlignment = Alignment.CenterVertically) {
             IconButton(onBack, Modifier.size(48.dp).testTag("subscription-detail-back").semantics { contentDescription = backLabel }) {
                 C2Icon(C2Glyph.Back)
             }
-            Spacer(Modifier.weight(1f))
+            Text("订阅详情", Modifier.weight(1f).semantics { heading() },
+                style = MaterialTheme.typography.titleLarge, fontWeight = FontWeight.SemiBold)
             if (state.detail != null && !state.missing) IconButton({ managementOpen = true },
                 Modifier.size(48.dp).testTag("subscription-detail-open-management")) {
                 C2Icon(C2Glyph.More, description = "更多订阅操作")
             }
         }
         LazyColumn(Modifier.weight(1f).fillMaxWidth().testTag("subscription-detail-content"),
-            contentPadding = PaddingValues(horizontal = LithicSpacing.page, vertical = 8.dp)) {
+            contentPadding = PaddingValues(start = ArchivePageInset, end = ArchivePageInset, top = 8.dp, bottom = 24.dp)) {
             if (state.loading) item { Text("正在读取订阅", Modifier.padding(LithicSpacing.medium)) }
             state.error?.let { message -> item {
                 Column {
@@ -106,7 +110,7 @@ internal fun SubscriptionDetailScreen(
                 .testTag("subscription-detail-missing"), style = MaterialTheme.typography.bodyLarge) }
             detail?.let { detail ->
                 item {
-                    Column(Modifier.padding(bottom = 14.dp), verticalArrangement = Arrangement.spacedBy(8.dp)) {
+                    Column(Modifier.padding(bottom = 20.dp), verticalArrangement = Arrangement.spacedBy(8.dp)) {
                         SubscriptionIdentity(detail, coverContent)
                         if (detail.cost.displayStatus == SubscriptionDisplayStatus.PAUSED && detail.renewals.none {
                             !it.paidOn.isAfter(detail.asOf) && !it.effectiveFrom.isAfter(detail.asOf) &&
@@ -125,7 +129,7 @@ internal fun SubscriptionDetailScreen(
                                 C2Glyph.Subscription, "subscription-detail-current-plan") { planOpen = current.id }
                         } else {
                             Surface(Modifier.fillMaxWidth().testTag("subscription-detail-current-plan"),
-                                shape = MaterialTheme.shapes.medium, color = colors.surface,
+                                shape = RoundedCornerShape(14.dp), color = colors.surface,
                                 border = BorderStroke(1.dp, colors.outlineVariant)) {
                                 Column(Modifier.padding(12.dp), verticalArrangement = Arrangement.spacedBy(2.dp)) {
                                     Text("当前无有效套餐", Modifier.testTag("subscription-detail-no-current-plan"),
@@ -144,11 +148,10 @@ internal fun SubscriptionDetailScreen(
                     }
                 }
                 item {
-                    Row(Modifier.fillMaxWidth().padding(top = 10.dp).heightIn(min = 48.dp), verticalAlignment = Alignment.CenterVertically) {
+                    Row(Modifier.fillMaxWidth().padding(top = 20.dp).heightIn(min = 48.dp), verticalAlignment = Alignment.CenterVertically) {
                         FlowRow(Modifier.weight(1f), horizontalArrangement = Arrangement.spacedBy(8.dp),
                             itemVerticalAlignment = Alignment.CenterVertically) {
-                            Text("付款历史", Modifier.semantics { heading() },
-                                style = MaterialTheme.typography.titleSmall, fontWeight = FontWeight.Normal)
+                            Text("付款历史", Modifier.semantics { heading() }, style = MaterialTheme.typography.titleMedium)
                             state.history.totalCount?.takeIf { !state.history.loading && state.history.error == null &&
                                 !state.loading && state.error == null }?.let {
                                 Text("$it 笔", Modifier.testTag("subscription-detail-payment-count"),
@@ -191,26 +194,31 @@ internal fun SubscriptionDetailScreen(
                     }
                 }
                 item {
-                    Column(Modifier.padding(top = 8.dp, bottom = 12.dp)) {
-                        TextButton({ showMoreDetails = !showMoreDetails },
-                            Modifier.testTag("subscription-detail-more").semantics {
-                                stateDescription = if (showMoreDetails) "已展开" else "已收起"
-                            }) {
-                            Text("更多资料", style = MaterialTheme.typography.bodyMedium, color = colors.onSurfaceVariant)
-                            C2Icon(C2Glyph.Chevron, Modifier.rotate(if (showMoreDetails) -90f else 90f))
+                    Surface(Modifier.fillMaxWidth().padding(top = 20.dp),
+                        shape = RoundedCornerShape(14.dp), color = colors.surface,
+                        border = BorderStroke(1.dp, colors.outlineVariant)) {
+                        Column(Modifier.padding(horizontal = 12.dp)) {
+                            ArchiveDetailDisclosure("更多资料", showMoreDetails, "subscription-detail-more") {
+                                showMoreDetails = !showMoreDetails
+                            }
+                            if (showMoreDetails) Box(Modifier.padding(bottom = 12.dp)) {
+                                SubscriptionOtherDetails(detail, !state.loading && state.error == null, onCorrectState)
+                            }
                         }
-                        if (showMoreDetails) SubscriptionOtherDetails(detail, !state.loading && state.error == null, onCorrectState)
                     }
                 }
             }
         }
         if (detail != null && detail.cost.displayStatus != SubscriptionDisplayStatus.STOPPED) {
             Surface(color = colors.background) {
-                Button(onRenewal, Modifier.fillMaxWidth().padding(horizontal = LithicSpacing.page, vertical = 9.dp).heightIn(min = 48.dp)
-                    .testTag("subscription-detail-renewal"), enabled = !state.loading && state.error == null, shape = CircleShape) {
-                    C2Icon(C2Glyph.Add)
-                    Spacer(Modifier.width(8.dp))
-                    Text("记录续费", style = MaterialTheme.typography.labelLarge)
+                Column {
+                    HorizontalDivider(color = colors.outlineVariant)
+                    Button(onRenewal, Modifier.fillMaxWidth().padding(horizontal = ArchivePageInset, vertical = 9.dp).heightIn(min = 48.dp)
+                        .testTag("subscription-detail-renewal"), enabled = !state.loading && state.error == null, shape = CircleShape) {
+                        C2Icon(C2Glyph.Add)
+                        Spacer(Modifier.width(8.dp))
+                        Text("记录续费", style = MaterialTheme.typography.labelLarge)
+                    }
                 }
             }
         }
@@ -308,7 +316,7 @@ private fun SubscriptionIdentity(detail: SubscriptionDetail, coverContent: (@Com
 @Composable
 private fun SubscriptionArchiveMetrics(detail: SubscriptionDetail) {
     val colors = MaterialTheme.colorScheme
-    Surface(Modifier.fillMaxWidth().testTag("subscription-core-metrics"), shape = MaterialTheme.shapes.medium,
+    Surface(Modifier.fillMaxWidth().testTag("subscription-core-metrics"), shape = RoundedCornerShape(14.dp),
         color = LocalLithicVisuals.current.costSurface, border = BorderStroke(1.dp, colors.outlineVariant)) {
         Column(Modifier.padding(start = 14.dp, end = 10.dp, bottom = 12.dp)) {
             FlowRow(itemVerticalAlignment = Alignment.CenterVertically) {
@@ -341,8 +349,8 @@ private fun SubscriptionPlanTile(title: String, subtitle: String, icon: C2Glyph,
     subtitleDescription: String? = null, onOpen: () -> Unit) {
     val colors = MaterialTheme.colorScheme
     Surface(onClick = onOpen, modifier = Modifier.fillMaxWidth().heightIn(min = 56.dp).testTag(tag),
-        shape = MaterialTheme.shapes.medium, color = colors.surface,
-        border = BorderStroke(1.dp, colors.outlineVariant), shadowElevation = 1.dp) {
+        shape = RoundedCornerShape(14.dp), color = colors.surface,
+        border = BorderStroke(1.dp, colors.outlineVariant)) {
         Row(Modifier.padding(horizontal = 12.dp, vertical = 8.dp), horizontalArrangement = Arrangement.spacedBy(10.dp),
             verticalAlignment = Alignment.CenterVertically) {
             C2Icon(icon)

@@ -1,11 +1,12 @@
 package com.cooper.lithic.feature.project
 
-import androidx.compose.foundation.layout.size
 import com.cooper.lithic.data.media.CoverOwnerType
 import com.cooper.lithic.data.media.CoverReference
 import com.cooper.lithic.feature.media.RecordCover
 import com.cooper.lithic.core.design.C2RecordIdentity
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.widthIn
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -19,6 +20,7 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import com.cooper.lithic.core.design.LithicTextButton as TextButton
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.semantics.heading
@@ -29,7 +31,9 @@ import com.cooper.lithic.core.design.C5InformationButton
 import com.cooper.lithic.core.design.C2PageHeader
 import com.cooper.lithic.core.design.C2Glyph
 import com.cooper.lithic.core.design.C2Icon
-import com.cooper.lithic.core.design.EntryCard
+import com.cooper.lithic.feature.archive.ArchiveContentWidth
+import com.cooper.lithic.feature.archive.ArchiveEntryRow
+import com.cooper.lithic.feature.archive.ArchivePageInset
 import com.cooper.lithic.core.design.LithicSpacing
 import com.cooper.lithic.data.repository.ProjectDetail
 
@@ -45,11 +49,11 @@ internal fun ProjectListScreen(
 ) {
     val countDescription = projectListCountDescription(state)
     val pageStatus = projectListPageStatus(state)
-    Column(modifier.fillMaxSize().testTag("project-list-screen")) {
-        LazyColumn(Modifier.fillMaxSize().testTag("project-list-content").semantics { stateDescription = countDescription },
+    Box(modifier.fillMaxSize().testTag("project-list-screen"), contentAlignment = Alignment.TopCenter) {
+        LazyColumn(Modifier.widthIn(max = ArchiveContentWidth).fillMaxSize().testTag("project-list-content").semantics { stateDescription = countDescription },
             verticalArrangement = Arrangement.spacedBy(LithicSpacing.xSmall)) {
             item {
-                Column(Modifier.fillMaxWidth().padding(horizontal = LithicSpacing.page),
+                Column(Modifier.fillMaxWidth().padding(horizontal = ArchivePageInset),
                     verticalArrangement = Arrangement.spacedBy(LithicSpacing.xSmall)) {
                     C2PageHeader("长期项目", onBack, "project-list-back", backLabel = "返回现在",
                     actions = { C5InformationButton("长期项目说明", Modifier.testTag("project-list-information")) {
@@ -99,15 +103,15 @@ internal fun ProjectListScreen(
             items(state.items, key = { it.project.id }) { detail ->
                 val dates = if (detail.cost.unavailableReason != null) "开始于 ${detail.project.startedOn}"
                     else "持有 ${detail.cost.heldDays}天" + (detail.project.endedOn?.let { " · 结束日期 $it" } ?: "")
-                EntryCard(detail.project.name, projectStatusLabel(detail), dates, detail.cost.dailyRate,
-                    Modifier.padding(horizontal = LithicSpacing.page).testTag("project-row-${detail.project.id}"),
+                ArchiveEntryRow(detail.project.name, projectStatusLabel(detail), dates, detail.cost.dailyRate,
+                    Modifier.padding(horizontal = ArchivePageInset).testTag("project-row-${detail.project.id}"),
                     onClick = { onOpenProject(detail.project.id) }, category = detail.category.name,
                     cover = { RecordCover(CoverReference(CoverOwnerType.PROJECT, detail.project.id, detail.project.coverAssetId),
-                        Modifier.size(64.dp)) { C2RecordIdentity(detail.project.name, detail.category.name, C2Glyph.Project) } },
-                    hasCoverReference = detail.project.coverAssetId != null, metricLabel = "当前日均成本")
+                        Modifier.fillMaxSize()) { C2RecordIdentity(detail.project.name, detail.category.name, C2Glyph.Project) } },
+                    metricLabel = "当前日均成本")
             }
             pageStatus?.let { status -> item {
-                Text(status, Modifier.padding(horizontal = LithicSpacing.page).testTag("project-list-page-status"),
+                Text(status, Modifier.padding(horizontal = ArchivePageInset).testTag("project-list-page-status"),
                     style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.onSurfaceVariant)
             } }
             if (state.hasMore) item {

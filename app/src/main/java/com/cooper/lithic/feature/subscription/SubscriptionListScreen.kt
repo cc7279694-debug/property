@@ -5,7 +5,9 @@ import com.cooper.lithic.data.media.CoverReference
 import com.cooper.lithic.feature.media.RecordCover
 import com.cooper.lithic.core.design.C2RecordIdentity
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.widthIn
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.heightIn
@@ -24,6 +26,7 @@ import androidx.compose.material3.Text
 import com.cooper.lithic.core.design.LithicTextButton as TextButton
 import androidx.compose.runtime.*
 import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.semantics.heading
@@ -32,7 +35,9 @@ import androidx.compose.ui.unit.dp
 import com.cooper.lithic.core.design.C2PageHeader
 import com.cooper.lithic.core.design.C2Glyph
 import com.cooper.lithic.core.design.C2Icon
-import com.cooper.lithic.core.design.EntryCard
+import com.cooper.lithic.feature.archive.ArchiveContentWidth
+import com.cooper.lithic.feature.archive.ArchiveEntryRow
+import com.cooper.lithic.feature.archive.ArchivePageInset
 import com.cooper.lithic.core.design.LithicSpacing
 import com.cooper.lithic.domain.subscription.SubscriptionDisplayStatus
 
@@ -47,11 +52,11 @@ internal fun SubscriptionListScreen(
     modifier: Modifier = Modifier,
 ) {
     var informationOpen by rememberSaveable { mutableStateOf(false) }
-    Column(modifier.fillMaxSize().testTag("subscription-list-screen")) {
-        LazyColumn(Modifier.fillMaxSize().testTag("subscription-list-content"),
+    Box(modifier.fillMaxSize().testTag("subscription-list-screen"), contentAlignment = Alignment.TopCenter) {
+        LazyColumn(Modifier.widthIn(max = ArchiveContentWidth).fillMaxSize().testTag("subscription-list-content"),
             verticalArrangement = Arrangement.spacedBy(LithicSpacing.xSmall)) {
             item {
-                Column(Modifier.fillMaxWidth().padding(horizontal = LithicSpacing.page),
+                Column(Modifier.fillMaxWidth().padding(horizontal = ArchivePageInset),
                     verticalArrangement = Arrangement.spacedBy(LithicSpacing.xSmall)) {
                     C2PageHeader("订阅服务", onBack, "subscription-list-back", backLabel = "返回现在",
                         actions = { IconButton({ informationOpen = true }, Modifier.size(48.dp).testTag("subscription-list-information")) {
@@ -69,7 +74,7 @@ internal fun SubscriptionListScreen(
             }
             if (state.loading) item { Text("正在读取订阅服务", Modifier.padding(LithicSpacing.medium)) }
             state.error?.let { message -> item {
-                Column(Modifier.fillMaxWidth().padding(horizontal = LithicSpacing.page)) {
+                Column(Modifier.fillMaxWidth().padding(horizontal = ArchivePageInset)) {
                     Text(message, Modifier.testTag("subscription-list-error"), style = MaterialTheme.typography.bodyLarge,
                         color = MaterialTheme.colorScheme.error)
                     if (state.items.isNotEmpty()) Text("显示上次读取的记录。",
@@ -99,20 +104,20 @@ internal fun SubscriptionListScreen(
                 val group = state.items.filter { it.cost.displayStatus == status }
                 if (group.isNotEmpty()) item {
                     Text(if (status == SubscriptionDisplayStatus.PAUSED) "暂停中" else subscriptionStatusLabel(status),
-                        Modifier.padding(horizontal = LithicSpacing.page).testTag("subscription-group-${status.name}").semantics { heading() },
+                        Modifier.padding(horizontal = ArchivePageInset).testTag("subscription-group-${status.name}").semantics { heading() },
                         style = MaterialTheme.typography.titleLarge)
                 }
                 items(group, key = { it.subscription.id }) { detail ->
-                val lastPaidOn = detail.renewals.maxOfOrNull { it.paidOn }
-                val timeLabel = (lastPaidOn?.let { "最近实际付款：$it\n" } ?: "暂无付费记录\n") +
-                    "折算付费时长：${detail.cost.standardPurchasedDays}天"
-                EntryCard(detail.subscription.name, subscriptionStatusLabel(detail.cost.displayStatus), timeLabel,
-                    detail.cost.historicalAverage,
-                    Modifier.padding(horizontal = LithicSpacing.page).testTag("subscription-row-${detail.subscription.id}"),
-                    onClick = { onOpenSubscription(detail.subscription.id) }, category = detail.category.name, kind = C2Glyph.Subscription,
-                    cover = { RecordCover(CoverReference(CoverOwnerType.SUBSCRIPTION, detail.subscription.id, detail.subscription.coverAssetId),
-                        Modifier.size(64.dp)) { C2RecordIdentity(detail.subscription.name, detail.category.name, C2Glyph.Subscription) } },
-                    hasCoverReference = detail.subscription.coverAssetId != null, metricLabel = "历史平均日成本")
+                    val lastPaidOn = detail.renewals.maxOfOrNull { it.paidOn }
+                    val timeLabel = (lastPaidOn?.let { "最近实际付款：$it\n" } ?: "暂无付费记录\n") +
+                        "折算付费时长：${detail.cost.standardPurchasedDays}天"
+                    ArchiveEntryRow(detail.subscription.name, subscriptionStatusLabel(detail.cost.displayStatus), timeLabel,
+                        detail.cost.historicalAverage,
+                        Modifier.padding(horizontal = ArchivePageInset).testTag("subscription-row-${detail.subscription.id}"),
+                        onClick = { onOpenSubscription(detail.subscription.id) }, category = detail.category.name,
+                        cover = { RecordCover(CoverReference(CoverOwnerType.SUBSCRIPTION, detail.subscription.id, detail.subscription.coverAssetId),
+                            Modifier.fillMaxSize()) { C2RecordIdentity(detail.subscription.name, detail.category.name, C2Glyph.Subscription) } },
+                        metricLabel = "历史平均日成本")
                 }
             }
             if (!state.loading && state.error == null && state.totalCount != null && state.items.isNotEmpty()) item {
@@ -120,7 +125,7 @@ internal fun SubscriptionListScreen(
                     state.loadingMore -> "正在读取下一页；已显示 ${state.items.size} / ${state.totalCount} 条"
                     state.hasMore -> "已显示 ${state.items.size} / ${state.totalCount} 条，可继续加载"
                     else -> "已显示 ${state.items.size} 条，已到列表末尾"
-                }, Modifier.padding(horizontal = LithicSpacing.page).testTag("subscription-list-page-status"),
+                }, Modifier.padding(horizontal = ArchivePageInset).testTag("subscription-list-page-status"),
                     style = MaterialTheme.typography.bodyMedium, color = MaterialTheme.colorScheme.onSurfaceVariant)
             }
             if (state.hasMore) item {
